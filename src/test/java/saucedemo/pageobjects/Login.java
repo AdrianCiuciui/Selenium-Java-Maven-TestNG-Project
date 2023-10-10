@@ -18,7 +18,6 @@ public class Login extends BasePageObject {
 
 
 
-
     public Login inputUsername(String username) {
 
         driver.findElement(inputFieldUsername).clear();
