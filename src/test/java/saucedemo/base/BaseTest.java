@@ -14,7 +14,7 @@ import java.util.Properties;
 public class BaseTest {
 
     public WebDriver driver;
-    private final Properties PROPERTIES = new Properties();
+    private static final Properties PROPERTIES = new Properties();
 
     @BeforeSuite
     public  void readPropertiesFile() {
@@ -31,56 +31,68 @@ public class BaseTest {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
-        waitUntilTimeIsPassed(2);
+        waitUntilTimeIsPassed(1);
+
     }
 
-    public String getUsernameRegular(){
+    public static String getUsernameRegular(){
 
         return PROPERTIES.getProperty("username.standard");
     }
 
-    public String getUsernameLocked(){
+    public static String getUsernameLocked(){
 
         return PROPERTIES.getProperty("username.locked");
     }
 
-    public String getUsernameProblem(){
+    public static String getUsernameProblem(){
 
         return PROPERTIES.getProperty("username.problem");
     }
 
-    public String getUsernamePerformanceIssues(){
+    public static String getUsernamePerformanceIssues(){
 
         return PROPERTIES.getProperty("username.performance");
     }
 
-    public String getPassword(){
+    public static String getUsernameNotRegistered(){
+
+        return PROPERTIES.getProperty("username.unavailable");
+    }
+
+    public static String getUsernameError(){
+
+        return PROPERTIES.getProperty("username.error");
+    }
+
+    public static String getPassword(){
 
         return PROPERTIES.getProperty("password");
     }
 
-    public String getURLBase(){
+    public static String getURLBase(){
 
         return PROPERTIES.getProperty("url.base");
     }
 
-    public String getURLCart(){
+    public static String getURLCart(){
 
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("url.cart"));
     }
 
-    public String getURLInventory(){
+    public static String getURLInventory(){
 
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("url.inventory"));
     }
 
-    public String getURLCheckoutStepOne(){
+    public static String getURLCheckoutStepOne(){
 
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("url.checkout.one"));
     }
 
-    public String getURLCheckoutStepTwo(){
+    public static String getURLCheckoutStepTwo(){
 
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("url.checkout.two"));
     }
@@ -88,6 +100,7 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
 
+        waitUntilTimeIsPassed(1);
         driver.quit();
     }
 

@@ -1,33 +1,67 @@
 package saucedemo.tests;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import saucedemo.base.BaseTest;
-import saucedemo.pageobjects.Login;
+import saucedemo.steps.LoginSteps;
+
 
 public class LoginTests extends BaseTest {
 
 
-    private Login login;
+    private LoginSteps loginSteps;
 
 
     @Override
     @BeforeMethod()
     public void setup(){
         super.setup();
-        login = new Login(driver);
+        loginSteps = new LoginSteps(driver);
     }
 
-    @Test
+    @DataProvider
+    public static Object[][] userType(){
+
+        return new Object[][] {
+                {getUsernameLocked()},
+                {getUsernameProblem()},
+                {getUsernamePerformanceIssues()},
+                {getUsernameError()}
+        };
+    }
+
+    @Test(priority = 1)
     public void loginWithRegularUser(){
 
-        login.inputUsername(getUsernameRegular()).
-                inputPassword(getPassword()).
-                clickLoginButton();
-
-
-
+        String username = getUsernameRegular();
+        loginSteps.
+                loginWithUsername(username, getPassword()).
+                checkPageAfterLogin(username);
     }
 
+    @Test(priority = 5, dataProvider = "userType")
+    public void loginWithNonRegularUser(String username){
 
+        loginSteps.
+                loginWithUsername(username, getPassword()).
+                checkPageAfterLogin(username);
+    }
+
+    @Test(priority = 10)
+    public void loginWithInvalidCredentials(){
+
+        String usernameNotRegistered = getUsernameNotRegistered();
+        String usernameExisting = getUsernameRegular();
+        String passwordNotOk = getPassword() + "aa";
+        String passwordOk = getPassword();
+
+        loginSteps.
+                loginWithUsername(usernameNotRegistered, passwordNotOk).
+                checkErrorIndicatorsOnLoginAndTheirClear().
+                loginWithUsername(usernameNotRegistered, passwordOk).
+                checkErrorIndicatorsOnLoginAndTheirClear().
+                loginWithUsername(usernameExisting, passwordNotOk).
+                checkErrorIndicatorsOnLoginAndTheirClear();
+    }
 }
