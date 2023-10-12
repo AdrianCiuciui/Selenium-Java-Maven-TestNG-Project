@@ -46,7 +46,7 @@ public class Login extends BasePageObject {
         return this;
     }
 
-    public boolean isPageElementsDisplayed(){
+    public boolean isAllPageElementsDisplayed(){
 
         return (
             driver.findElement(logo).isDisplayed() &&
