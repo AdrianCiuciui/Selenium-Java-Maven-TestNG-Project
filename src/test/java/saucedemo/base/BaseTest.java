@@ -1,5 +1,6 @@
 package saucedemo.base;
 
+import groovy.lang.GString;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -97,6 +98,11 @@ public class BaseTest {
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("url.checkout.two"));
     }
 
+    public static String getURLCheckoutSuccess(){
+
+        return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("/checkout-complete.html"));
+    }
+
     @AfterMethod
     public void tearDown() {
 
@@ -112,10 +118,4 @@ public class BaseTest {
             Thread.currentThread().interrupt();
         }
     }
-
-
-
-
-
-
 }

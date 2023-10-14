@@ -9,21 +9,20 @@ import static org.openqa.selenium.By.xpath;
 public class Login extends BasePageObject {
 
 
-    private By logo = xpath("//div[@class='login_logo']");
-    private By loginCredentials = xpath("//div[@class='login_credentials_wrap-inner']");
-    private By inputFieldUsername = xpath("//input[@id='user-name']");
-    private By inputFieldPassword = xpath("//input[@id='password']");
-    private By buttonLogin = xpath("//input[@id='login-button']");
-    private By errorTextMessage = xpath("//div[@class='error-message-container error']//h3[@data-test='error']");
-    private By errorIconInInputField = xpath("//div[@class='login-box']//*[@data-icon='times-circle']");
-    private By getErrorAtCredentialsButton = xpath("//h3[@data-test='error']//button");
-    private By errorTextMessageIsHidden = xpath("//div[@class='error-message-container']");
+    private final By logo = xpath("//div[@class='login_logo']");
+    private final By loginCredentials = xpath("//div[@class='login_credentials_wrap-inner']");
+    private final By inputFieldUsername = xpath("//input[@id='user-name']");
+    private final By inputFieldPassword = xpath("//input[@id='password']");
+    private final By buttonLogin = xpath("//input[@id='login-button']");
+    private final By errorTextMessage = xpath("//div[@class='error-message-container error']//h3[@data-test='error']");
+    private final By errorIconInInputField = xpath("//div[@class='login-box']//*[@data-icon='times-circle']");
+    private final By getErrorAtCredentialsButton = xpath("//h3[@data-test='error']//button");
+    private final By errorTextMessageIsHidden = xpath("//div[@class='error-message-container']");
 
 
     public Login(WebDriver driver) {
         super(driver);
     }
-
 
 
     public Login inputUsername(String username) {
@@ -65,11 +64,5 @@ public class Login extends BasePageObject {
         driver.findElement(getErrorAtCredentialsButton).click();
         return this;
     }
-
-
-
-
-
-
 
 }

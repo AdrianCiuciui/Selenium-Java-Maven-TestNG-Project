@@ -8,11 +8,11 @@ import static org.openqa.selenium.By.xpath;
 
 public class Footer extends BasePageObject {
 
-    private By footerArea = xpath("//footer[@class='footer']");
-    private By footerCopyright = xpath("//div[@class='footer_copy']");
-    private By socialTwitter = xpath("//li[@class='social_twitter']");
-    private By socialFacebook = xpath("//li[@class='social_facebook']");
-    private By socialLinkedin = xpath("//li[@class='social_LinkedIn']");
+    private final By footerArea = xpath("//footer[@class='footer']");
+    private final By footerCopyright = xpath("//div[@class='footer_copy']");
+    private final By socialTwitter = xpath("//li[@class='social_twitter']");
+    private final By socialFacebook = xpath("//li[@class='social_facebook']");
+    private final By socialLinkedin = xpath("//li[@class='social_LinkedIn']");
 
 
     public Footer(WebDriver driver) {
@@ -37,4 +37,5 @@ public class Footer extends BasePageObject {
 
         return driver.findElement(footerCopyright).getText();
     }
+
 }

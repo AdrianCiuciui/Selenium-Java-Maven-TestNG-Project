@@ -8,23 +8,21 @@ import static org.openqa.selenium.By.xpath;
 
 public class Header extends BasePageObject {
 
-    private By pageTitle = xpath("//*[@class='title']");
-    private By buttonMenu = xpath("//*[@id='react-burger-menu-btn']");
-    private By buttonCart = xpath("//*[@id='shopping_cart_container']");
-    private By buttonFilter = xpath("//*[@class='select_container']");
-    private By cartBadge = xpath("//*[@class='shopping_cart_badge']");
-    private By filterOptionsAZ = xpath("//option[@value='az']");
-    private By filterOptionsZA = xpath("//option[@value='za']");
-    private By filterOptionsLowHigh = xpath("//option[@value='lohi']");
-    private By filterOptionsHighLow = xpath("//option[@value='hilo']");
-
-
-
+    private final By pageTitle = xpath("//*[@class='title']");
+    private final By buttonMenu = xpath("//*[@id='react-burger-menu-btn']");
+    private final By buttonCart = xpath("//*[@id='shopping_cart_container']");
+    private final By buttonFilter = xpath("//*[@class='select_container']");
+    private final By cartBadge = xpath("//*[@class='shopping_cart_badge']");
+    private final By filterOptionsAZ = xpath("//option[@value='az']");
+    private final By filterOptionsZA = xpath("//option[@value='za']");
+    private final By filterOptionsLowHigh = xpath("//option[@value='lohi']");
+    private final By filterOptionsHighLow = xpath("//option[@value='hilo']");
 
 
     public Header(WebDriver driver) {
         super(driver);
     }
+
 
     public boolean isTitleDisplayed(){
 
@@ -74,8 +72,8 @@ public class Header extends BasePageObject {
     }
 
     public String getCartBadgeValue(){
-
-        return driver.findElement(cartBadge).getText(); //todo daca nu merge, incearca cu get attribute
+//todo   daca nu merge, incearca cu get attribute
+        return driver.findElement(cartBadge).getText();
     }
 
 }
