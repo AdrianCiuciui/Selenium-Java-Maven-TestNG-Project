@@ -15,15 +15,16 @@ import static saucedemo.base.BaseTest.getUsernameRegular;
 
 public class LoginSteps {
 
-
     protected WebDriver driver;
     private final Login login;
 
+
     public LoginSteps(WebDriver driver){
 
-        login = new Login(driver);
         this.driver = driver;
+        login = new Login(driver);
     }
+
 
     public LoginSteps loginWithUsername(String username, String password){
 

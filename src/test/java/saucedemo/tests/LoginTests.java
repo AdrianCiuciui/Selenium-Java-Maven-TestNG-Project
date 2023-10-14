@@ -56,6 +56,7 @@ public class LoginTests extends BaseTest {
         String passwordNotOk = getPassword() + "aa";
         String passwordOk = getPassword();
 
+        //todo   fa cu dataprovider
         loginSteps.
                 loginWithUsername(usernameNotRegistered, passwordNotOk).
                 checkErrorIndicatorsOnLoginAndTheirClear().
