@@ -1,6 +1,5 @@
 package saucedemo.base;
 
-import groovy.lang.GString;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,11 +10,13 @@ import org.testng.annotations.BeforeSuite;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Random;
 
 public class BaseTest {
 
     public WebDriver driver;
     private static final Properties PROPERTIES = new Properties();
+    protected static boolean[] isProductInCart = new boolean[6];
 
     @BeforeSuite
     public  void readPropertiesFile() {
@@ -35,7 +36,6 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
         waitUntilTimeIsPassed(1);
-
     }
 
     public static String getUsernameRegular(){
@@ -103,10 +103,21 @@ public class BaseTest {
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("/checkout-complete.html"));
     }
 
+    public static int randomValue(){
+
+        Random random = new Random();
+        return random.nextInt(6) + 1;
+    }
+
+    public static void changeProductsArrayBooleanStatus(){
+
+
+    }
+
     @AfterMethod
     public void tearDown() {
 
-        waitUntilTimeIsPassed(1);
+        waitUntilTimeIsPassed(2);
         driver.quit();
     }
 
