@@ -32,17 +32,17 @@ public class CheckoutStepTwo extends Cart {
     }
 
     public String getProductsTotalPrice(){
-    //todo  not complete, will return all text
+
         return (driver.findElement(labelPriceItemsTotal).getText().substring(13));
     }
 
     public String getProductTaxPrice(){
-        //todo  not complete, need to work on the string
+
         return (driver.findElement(labelPriceTax).getText().substring(6));
     }
 
     public String getProductFinalTotalPrice(){
-//todo   se paote sa fi gresit la substring value
+
         return (driver.findElement(labelPriceTotal).getText().substring(8));
     }
 

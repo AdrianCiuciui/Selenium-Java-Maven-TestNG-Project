@@ -20,7 +20,9 @@ public class CheckoutOneSteps {
 
     public CheckoutOneSteps fillInInputFieldsAndPressNext(){
 
-        checkoutStepOne.inputFirstName(randomAlphaNumeric(3));
+        checkoutStepOne.inputFirstName(randomAlphaNumeric(3)).
+                inputLastName(randomAlphaNumeric(3)).
+                inputPostalCode(randomAlphaNumeric(3));
         checkoutStepOne.clickContinueButton();
         return this;
     }
