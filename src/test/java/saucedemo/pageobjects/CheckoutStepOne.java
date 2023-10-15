@@ -12,7 +12,7 @@ import static org.openqa.selenium.By.xpath;
 public class CheckoutStepOne extends BasePageObject {
 
     private final By buttonCancel = xpath("//button[@id='cancel']");
-    private final By buttonContinue = xpath("//button[@id='continue']");
+    private final By buttonContinue = xpath("//input[@id='continue']");
     private final By buttonErrorCloseMessage = xpath("//button[@class='error-button']");
     private final By inputFirstName = xpath("//input[@id='first-name']");
     private final By inputLastName = xpath("//input[@id='last-name']");

@@ -103,7 +103,7 @@ public class BaseTest {
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("/checkout-complete.html"));
     }
 
-    public static int randomValue(){
+    public static int randomNumber1To6(){
 
         Random random = new Random();
         return random.nextInt(6) + 1;
@@ -117,11 +117,11 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
 
-        waitUntilTimeIsPassed(2);
+        waitUntilTimeIsPassed(1);
         driver.quit();
     }
 
-    public void waitUntilTimeIsPassed(long seconds){
+    public static void waitUntilTimeIsPassed(long seconds){
 
         try{
             Thread.sleep(seconds * 1000);

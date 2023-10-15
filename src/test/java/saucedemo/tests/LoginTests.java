@@ -24,6 +24,7 @@ public class LoginTests extends BaseTest {
     public static Object[][] userType(){
 
         return new Object[][] {
+                {getUsernameRegular()},
                 {getUsernameLocked()},
                 {getUsernameProblem()},
                 {getUsernamePerformanceIssues()},
@@ -31,16 +32,12 @@ public class LoginTests extends BaseTest {
         };
     }
 
-    @Test(priority = 1)
-    public void loginWithRegularUser(){
-
-        String username = getUsernameRegular();
-        loginSteps.
-                loginWithUsername(username, getPassword()).
-                checkPageAfterLogin(username);
-    }
-
-    @Test(priority = 5, dataProvider = "userType")
+    /**
+     * The test logs in with all available test users and checks the next page
+     *
+     * @param username taken from the Dataprovider
+     */
+    @Test(priority = 1, dataProvider = "userType")
     public void loginWithNonRegularUser(String username){
 
         loginSteps.
@@ -48,21 +45,26 @@ public class LoginTests extends BaseTest {
                 checkPageAfterLogin(username);
     }
 
-    @Test(priority = 10)
-    public void loginWithInvalidCredentials(){
 
-        String usernameNotRegistered = getUsernameNotRegistered();
-        String usernameExisting = getUsernameRegular();
-        String passwordNotOk = getPassword() + "aa";
-        String passwordOk = getPassword();
+    @DataProvider
+    public static Object[][] invalidCredentials(){
 
-        //todo   fa cu dataprovider
+        return new Object[][]{
+                {getUsernameNotRegistered(), getPassword() + "aa"},
+                {getUsernameNotRegistered(), getPassword()},
+                {getUsernameRegular(), getPassword() + "aa"}
+        };
+    }
+
+    /**
+     * This test covers the errors cases on the login form.
+     */
+    @Test(priority = 5, dataProvider = "invalidCredentials")
+    public void loginWithInvalidCredentials(String username, String password){
+
         loginSteps.
-                loginWithUsername(usernameNotRegistered, passwordNotOk).
-                checkErrorIndicatorsOnLoginAndTheirClear().
-                loginWithUsername(usernameNotRegistered, passwordOk).
-                checkErrorIndicatorsOnLoginAndTheirClear().
-                loginWithUsername(usernameExisting, passwordNotOk).
+                loginWithUsername(username, password).
                 checkErrorIndicatorsOnLoginAndTheirClear();
     }
+
 }

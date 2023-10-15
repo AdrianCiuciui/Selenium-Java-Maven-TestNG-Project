@@ -19,6 +19,18 @@ public class Products extends BasePageObject {
         super(driver);
     }
 
+
+    public boolean isPageDisplayed(){
+
+        return (
+                driver.findElement(By.xpath(String.format(buttonProductAllSection, 1))).isDisplayed() &&
+                driver.findElement(By.xpath(String.format(buttonProductImage, 2))).isDisplayed() &&
+                driver.findElement(By.xpath(String.format(buttonProductTitle, 3))).isDisplayed() &&
+                driver.findElement(By.xpath(String.format(buttonProductAddToCart, 4))).isDisplayed() &&
+                driver.findElement(By.xpath(String.format(labelProductDescription, 5))).isDisplayed() &&
+                driver.findElement(By.xpath(String.format(labelProductPrice, 6))).isDisplayed());
+    }
+
     public Products clickProductImage(int index){
 
         driver.findElement(By.xpath(String.format(buttonProductImage, index))).click();
