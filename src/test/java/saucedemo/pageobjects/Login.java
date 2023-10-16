@@ -7,8 +7,6 @@ import saucedemo.base.BasePageObject;
 import static org.openqa.selenium.By.xpath;
 
 public class Login extends BasePageObject {
-
-
     private final By logo = xpath("//div[@class='login_logo']");
     private final By loginCredentials = xpath("//div[@class='login_credentials_wrap-inner']");
     private final By inputFieldUsername = xpath("//input[@id='user-name']");
@@ -18,12 +16,6 @@ public class Login extends BasePageObject {
     private final By errorIconInInputField = xpath("//div[@class='login-box']//*[@data-icon='times-circle']");
     private final By getErrorAtCredentialsButton = xpath("//h3[@data-test='error']//button");
     private final By errorTextMessageIsHidden = xpath("//div[@class='error-message-container']");
-
-
-    public Login(WebDriver driver) {
-        super(driver);
-    }
-
 
     public Login inputUsername(String username) {
 

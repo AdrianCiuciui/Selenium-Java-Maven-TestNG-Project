@@ -8,14 +8,10 @@ import java.util.Random;
 import static saucedemo.base.BasePageObject.randomAlphaNumeric;
 
 public class CheckoutOneSteps {
-
-    protected WebDriver driver;
     private CheckoutStepOne checkoutStepOne;
 
-    public CheckoutOneSteps(WebDriver driver) {
-
-        this.driver = driver;
-        checkoutStepOne = new CheckoutStepOne(driver);
+    public CheckoutOneSteps() {
+        checkoutStepOne = new CheckoutStepOne();
     }
 
     public CheckoutOneSteps fillInInputFieldsAndPressNext(){

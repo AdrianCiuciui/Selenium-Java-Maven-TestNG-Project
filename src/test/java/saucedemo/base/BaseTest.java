@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
 
-public class BaseTest {
+public class BaseTest{
 
-    public WebDriver driver;
+    public static WebDriver driver;
     private static final Properties PROPERTIES = new Properties();
     protected static boolean[] isProductInCart = new boolean[6];
 
@@ -35,6 +35,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
+        BasePageObject.setDriver(driver);
         waitUntilTimeIsPassed(1);
     }
 

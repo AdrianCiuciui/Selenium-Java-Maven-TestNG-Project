@@ -6,16 +6,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class CheckoutTwoSteps {
-
-    protected WebDriver driver;
     private final CheckoutStepTwo checkoutStepTwo;
 
-    public CheckoutTwoSteps(WebDriver driver) {
-
-        this.driver = driver;
-        checkoutStepTwo = new CheckoutStepTwo(driver);
+    public CheckoutTwoSteps() {
+        checkoutStepTwo = new CheckoutStepTwo();
     }
-
 
     public CheckoutTwoSteps checkTotalPriceValue(){
 

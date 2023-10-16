@@ -13,12 +13,6 @@ public class OrderConfirmation extends BasePageObject {
     private final By labelSuccessMessageDescription = xpath("//*[@class='complete-text']");
     private final By buttonBackHome = xpath("//button[@id='back-to-products']");
 
-
-    public OrderConfirmation(WebDriver driver) {
-        super(driver);
-    }
-
-
     public OrderConfirmation clickBackHomeButton(){
 
         driver.findElement(buttonBackHome).click();

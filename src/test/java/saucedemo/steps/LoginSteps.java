@@ -1,6 +1,7 @@
 package saucedemo.steps;
 
 import org.openqa.selenium.WebDriver;
+import saucedemo.base.BasePageObject;
 import saucedemo.pageobjects.Login;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,20 +16,16 @@ import static saucedemo.base.BaseTest.getUsernameRegular;
 
 public class LoginSteps {
 
-    protected WebDriver driver;
     private final Login login;
 
-
-    public LoginSteps(WebDriver driver){
-
-        this.driver = driver;
-        login = new Login(driver);
+    public LoginSteps(){
+        login = new Login();
     }
 
 
     public LoginSteps loginWithUsername(String username, String password){
 
-        String currentURL = driver.getCurrentUrl();
+        String currentURL = BasePageObject.driver.getCurrentUrl();
         assertThat(currentURL, containsString(getURLBase()));
         assertThat(login.isAllPageElementsDisplayed(), is(true));
         login.inputUsername(username).
@@ -47,7 +44,7 @@ public class LoginSteps {
 
     public LoginSteps checkPageAfterLogin(String username){
 
-        String currentURL = driver.getCurrentUrl();
+        String currentURL = BasePageObject.driver.getCurrentUrl();
         if (username.equals(getUsernameLocked())) {
             assertThat(currentURL, containsString(getURLBase()));
         } else if (username.equals(getUsernameNotRegistered())) {

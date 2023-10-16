@@ -3,11 +3,12 @@ package saucedemo.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import saucedemo.base.BasePageObject;
 import saucedemo.base.BaseTest;
 import saucedemo.steps.LoginSteps;
 
 
-public class LoginTests extends BaseTest {
+public class LoginTests extends BaseTest{
 
 
     private LoginSteps loginSteps;
@@ -17,7 +18,7 @@ public class LoginTests extends BaseTest {
     @BeforeMethod()
     public void setup(){
         super.setup();
-        loginSteps = new LoginSteps(driver);
+        loginSteps = new LoginSteps();
     }
 
     @DataProvider

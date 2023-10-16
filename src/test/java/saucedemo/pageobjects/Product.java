@@ -16,12 +16,6 @@ public class Product extends BasePageObject {
     private final By labelProductDescription = xpath("//div[@class='inventory_details_name large_size']");
     private final By labelProductPrice = xpath("//div[@class='inventory_details_price']");
 
-
-    public Product(WebDriver driver) {
-        super(driver);
-    }
-
-
     public Product clickBackToProducts(){
 
         driver.findElement(buttonBackToProducts).click();

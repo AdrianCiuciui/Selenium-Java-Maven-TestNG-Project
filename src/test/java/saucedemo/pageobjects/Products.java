@@ -15,11 +15,6 @@ public class Products extends BasePageObject {
     private final String labelProductPrice = buttonProductAllSection + "//*[@class='inventory_item_price']";
 
 
-    public Products(WebDriver driver) {
-        super(driver);
-    }
-
-
     public boolean isPageDisplayed(){
 
         return (
