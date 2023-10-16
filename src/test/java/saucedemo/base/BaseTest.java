@@ -1,11 +1,13 @@
 package saucedemo.base;
 
+import saucedemo.base.BasePageObject;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import saucedemo.pageobjects.Login;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +16,7 @@ import java.util.Random;
 
 public class BaseTest {
 
-    public WebDriver driver;
+    public static WebDriver driver;
     private static final Properties PROPERTIES = new Properties();
     protected static boolean[] isProductInCart = new boolean[6];
 
@@ -30,11 +32,11 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
+        BasePageObject.setDriver(driver);
         waitUntilTimeIsPassed(1);
     }
 

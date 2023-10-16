@@ -14,12 +14,6 @@ public class Footer extends BasePageObject {
     private final By socialFacebook = xpath("//li[@class='social_facebook']");
     private final By socialLinkedin = xpath("//li[@class='social_LinkedIn']");
 
-
-    public Footer(WebDriver driver) {
-        super(driver);
-    }
-
-
     public boolean isFooterDisplayed(){
 
         return driver.findElement(footerArea).isDisplayed();

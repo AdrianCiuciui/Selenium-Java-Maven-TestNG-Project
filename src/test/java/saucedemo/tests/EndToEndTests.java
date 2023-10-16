@@ -20,13 +20,13 @@ public class EndToEndTests extends BaseTest{
     @BeforeMethod
     public void setup(){
         super.setup();
-        loginSteps = new LoginSteps(driver);
-        productsSteps = new ProductsSteps(driver);
-        cartSteps = new CartSteps(driver);
-        checkoutOneSteps = new CheckoutOneSteps(driver);
-        checkoutTwoSteps = new CheckoutTwoSteps(driver);
-        confirmationSteps = new OrderConfirmationSteps(driver);
-        headerSteps = new HeaderSteps(driver);
+        loginSteps = new LoginSteps();
+        productsSteps = new ProductsSteps();
+        cartSteps = new CartSteps();
+        checkoutOneSteps = new CheckoutOneSteps();
+        checkoutTwoSteps = new CheckoutTwoSteps();
+        confirmationSteps = new OrderConfirmationSteps();
+        headerSteps = new HeaderSteps();
 
         loginSteps.loginWithUsernameRegular();
     }

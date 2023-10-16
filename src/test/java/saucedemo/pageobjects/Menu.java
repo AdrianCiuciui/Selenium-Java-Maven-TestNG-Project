@@ -15,11 +15,6 @@ public class Menu extends BasePageObject {
     private final By buttonCloseMenu = xpath("//button[@id='react-burger-cross-btn']");
     private final By menuBar = xpath("//div[@class='bm-menu']");
 
-    public Menu(WebDriver driver) {
-        super(driver);
-    }
-
-
     public boolean isMenuDisplayed(){
 
         return driver.findElement(menuBar).isDisplayed();

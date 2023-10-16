@@ -9,13 +9,11 @@ import static saucedemo.base.BasePageObject.randomAlphaNumeric;
 
 public class CheckoutOneSteps {
 
-    protected WebDriver driver;
     private CheckoutStepOne checkoutStepOne;
 
-    public CheckoutOneSteps(WebDriver driver) {
+    public CheckoutOneSteps() {
 
-        this.driver = driver;
-        checkoutStepOne = new CheckoutStepOne(driver);
+        checkoutStepOne = new CheckoutStepOne();
     }
 
     public CheckoutOneSteps fillInInputFieldsAndPressNext(){
