@@ -7,10 +7,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class OrderConfirmationSteps {
+
+    protected WebDriver driver;
     private OrderConfirmation orderConfirmation;
 
-    public OrderConfirmationSteps() {
-        this.orderConfirmation = new OrderConfirmation();
+    public OrderConfirmationSteps(WebDriver driver) {
+
+        this.driver = driver;
+        this.orderConfirmation = new OrderConfirmation(driver);
     }
 
     public OrderConfirmationSteps checkPageIsDisplayed(){

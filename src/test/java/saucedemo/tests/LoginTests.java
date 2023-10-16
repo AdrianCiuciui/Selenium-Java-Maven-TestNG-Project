@@ -10,16 +10,15 @@ import saucedemo.steps.LoginSteps;
 public class LoginTests extends BaseTest {
 
 
-//    private LoginSteps loginSteps;
-    public LoginSteps loginSteps = new LoginSteps();
+    private LoginSteps loginSteps;
 
 
-//    @Override
-//    @BeforeMethod()
-//    public void setup(){
-//        super.setup();
-//        loginSteps = new LoginSteps(driver);
-//    }
+    @Override
+    @BeforeMethod()
+    public void setup(){
+        super.setup();
+        loginSteps = new LoginSteps(driver);
+    }
 
     @DataProvider
     public static Object[][] userType(){

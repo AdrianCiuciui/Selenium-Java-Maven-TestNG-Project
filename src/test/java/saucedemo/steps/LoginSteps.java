@@ -1,7 +1,6 @@
 package saucedemo.steps;
 
 import org.openqa.selenium.WebDriver;
-import saucedemo.base.BasePageObject;
 import saucedemo.pageobjects.Login;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,12 +13,18 @@ import static saucedemo.base.BaseTest.getUsernameLocked;
 import static saucedemo.base.BaseTest.getUsernameNotRegistered;
 import static saucedemo.base.BaseTest.getUsernameRegular;
 
-public class LoginSteps extends BasePageObject {
-    protected Login login;
+public class LoginSteps {
 
-    public LoginSteps(){
-        login = new Login();
+    protected WebDriver driver;
+    private final Login login;
+
+
+    public LoginSteps(WebDriver driver){
+
+        this.driver = driver;
+        login = new Login(driver);
     }
+
 
     public LoginSteps loginWithUsername(String username, String password){
 

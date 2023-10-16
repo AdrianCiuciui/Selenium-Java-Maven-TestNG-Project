@@ -19,6 +19,12 @@ public class Login extends BasePageObject {
     private final By getErrorAtCredentialsButton = xpath("//h3[@data-test='error']//button");
     private final By errorTextMessageIsHidden = xpath("//div[@class='error-message-container']");
 
+
+    public Login(WebDriver driver) {
+        super(driver);
+    }
+
+
     public Login inputUsername(String username) {
 
         driver.findElement(inputFieldUsername).clear();

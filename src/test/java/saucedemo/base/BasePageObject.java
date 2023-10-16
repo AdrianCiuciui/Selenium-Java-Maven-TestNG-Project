@@ -5,11 +5,12 @@ import org.openqa.selenium.WebDriver;
 
 public class BasePageObject {
 
-    public static WebDriver driver;
+    protected WebDriver driver;
 
-    public static void setDriver(WebDriver driver) {
-        BasePageObject.driver = driver;
+    public BasePageObject(WebDriver driver) {
+        this.driver = driver;
     }
+
 
     public static String randomAlphaNumeric(int length){
 

@@ -22,6 +22,12 @@ public class CheckoutStepOne extends BasePageObject {
     private final By errorInputFields_NotUnique = xpath("//input[@class='input_error form_input error']");
     private final int NO_OF_INPUT_FIELDS = 3;
 
+
+    public CheckoutStepOne(WebDriver driver) {
+        super(driver);
+    }
+
+
     public CheckoutStepOne clickCancelButton(){
 
         driver.findElement(buttonCancel).click();

@@ -6,10 +6,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class HeaderSteps {
+
+
+    protected WebDriver driver;
     private final Header header;
 
-    public HeaderSteps(){
-        header = new Header();
+    public HeaderSteps(WebDriver driver){
+
+        this.driver = driver;
+        header = new Header(driver);
     }
 
 

@@ -15,6 +15,12 @@ public class Cart extends BasePageObject {
     private final String labelDescription = "(//*[@class='inventory_item_desc'])[%d]";
     private final String labelPrice = "(//*[@class='inventory_item_price'])[%d]";
 
+
+    public Cart(WebDriver driver) {
+        super(driver);
+    }
+
+
     public Cart clickCheckoutButton(){
 
         driver.findElement(buttonCheckout).click();

@@ -5,10 +5,14 @@ import saucedemo.pageobjects.Cart;
 
 public class CartSteps {
 
+    protected WebDriver driver;
     private final Cart cart;
 
-    public CartSteps() {
-        cart = new Cart();
+
+    public CartSteps(WebDriver driver) {
+
+        this.driver = driver;
+        cart = new Cart(driver);
     }
 
     public CartSteps pressCheckoutButton(){

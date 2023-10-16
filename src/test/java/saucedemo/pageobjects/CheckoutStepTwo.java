@@ -13,6 +13,12 @@ public class CheckoutStepTwo extends Cart {
     private final By buttonCancel = xpath("//button[@id='cancel']");
     private final By buttonFinish = xpath("//button[@id='finish']");
 
+
+    public CheckoutStepTwo(WebDriver driver) {
+        super(driver);
+    }
+
+
     public CheckoutStepTwo clickCancelButton(){
 
         driver.findElement(buttonCancel).click();
