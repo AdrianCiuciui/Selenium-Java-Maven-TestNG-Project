@@ -12,7 +12,7 @@ public class CheckoutTwoSteps {
         checkoutStepTwo = new CheckoutStepTwo();
     }
 
-    public CheckoutTwoSteps checkTotalPriceValue(){
+    public void checkTotalPriceValue(){
 
         double priceTotal = Double.parseDouble(checkoutStepTwo.getProductsTotalPrice());
         double priceTax = Double.parseDouble(checkoutStepTwo.getProductTaxPrice());
@@ -22,13 +22,10 @@ public class CheckoutTwoSteps {
         String formattedSum = String.format("%.2f", sumFromTotalAndTax);
 
         assertThat(formattedSum, is(priceFinalTotal));
-        return this;
     }
 
-    public CheckoutTwoSteps pressFinishButton(){
-
+    public void pressFinishButton(){
         checkoutStepTwo.clickFinishButton();
-        return this;
     }
 
 }

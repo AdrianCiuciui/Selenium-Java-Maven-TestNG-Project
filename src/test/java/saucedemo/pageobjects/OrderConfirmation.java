@@ -13,24 +13,19 @@ public class OrderConfirmation extends BasePageObject {
     private final By labelSuccessMessageDescription = xpath("//*[@class='complete-text']");
     private final By buttonBackHome = xpath("//button[@id='back-to-products']");
 
-    public OrderConfirmation clickBackHomeButton(){
-
+    public void clickBackHomeButton(){
         driver.findElement(buttonBackHome).click();
-        return this;
     }
 
     public boolean isSuccessImageDisplayed(){
-
         return driver.findElement(labelSuccessIcon).isDisplayed();
     }
 
     public boolean isMessageHeaderDisplayed(){
-
         return driver.findElement(labelSuccessMessageHeader).isDisplayed();
     }
 
     public boolean isMessageDescriptionDisplayed(){
-
         return driver.findElement(labelSuccessMessageDescription).isDisplayed();
     }
 

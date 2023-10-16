@@ -12,11 +12,8 @@ public class HeaderSteps {
         header = new Header();
     }
 
-
-    public HeaderSteps checkPageIsDisplayed(){
-
+    public void checkPageIsDisplayed(){
         assertThat(header.isTitleDisplayed(), is(true));
-        return this;
     }
 
 }

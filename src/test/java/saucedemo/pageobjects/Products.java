@@ -16,7 +16,6 @@ public class Products extends BasePageObject {
 
 
     public boolean isPageDisplayed(){
-
         return (
                 driver.findElement(By.xpath(String.format(buttonProductAllSection, 1))).isDisplayed() &&
                 driver.findElement(By.xpath(String.format(buttonProductImage, 2))).isDisplayed() &&
@@ -26,37 +25,27 @@ public class Products extends BasePageObject {
                 driver.findElement(By.xpath(String.format(labelProductPrice, 6))).isDisplayed());
     }
 
-    public Products clickProductImage(int index){
-
+    public void clickProductImage(int index){
         driver.findElement(By.xpath(String.format(buttonProductImage, index))).click();
-        return this;
     }
 
-    public Products clickProductTitle(int index){
-
+    public void clickProductTitle(int index){
         driver.findElement(By.xpath(String.format(buttonProductTitle, index))).click();
-        return this;
     }
 
-    public Products clickAddToCart(int index){
-
+    public void clickAddToCart(int index){
         driver.findElement(By.xpath(String.format(buttonProductAddToCart, index))).click();
-        return this;
     }
 
-    public Products clickRemoveFromCart(int index){
-
+    public void clickRemoveFromCart(int index){
         driver.findElement(By.xpath(String.format(buttonProductRemoveFromCart, index))).click();
-        return this;
     }
 
     public String getProductDescription(int index){
-
         return driver.findElement(By.xpath(String.format(labelProductDescription, index))).getText(); //todo    confirm it works
     }
 
     public String getProductPrice(int index){
-
         String price = driver.findElement(By.xpath(String.format(labelProductPrice, index))).getText(); //todo  confirm it works
         return price.substring(1);
     }

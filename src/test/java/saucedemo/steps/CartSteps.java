@@ -1,9 +1,9 @@
 package saucedemo.steps;
 
-import org.openqa.selenium.WebDriver;
+import saucedemo.base.BasePageObject;
 import saucedemo.pageobjects.Cart;
 
-public class CartSteps {
+public class CartSteps extends BasePageObject {
 
     private final Cart cart;
 
@@ -12,26 +12,15 @@ public class CartSteps {
         cart = new Cart();
     }
 
-    public CartSteps pressCheckoutButton(){
-
+    public void pressCheckoutButton(){
         cart.clickCheckoutButton();
-        return this;
     }
 
-    public CartSteps pressContinueShoppingButton(){
-
+    public void pressContinueShoppingButton(){
         cart.clickContinueShoppingButton();
-        return this;
     }
 
-    public CartSteps removeProduct(int index){
-
+    public void removeProduct(int index){
         cart.clickProductRemoveButton(index);
-        return this;
     }
-
-
-
-
-
 }

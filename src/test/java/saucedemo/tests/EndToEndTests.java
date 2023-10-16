@@ -39,22 +39,15 @@ public class EndToEndTests extends BaseTest{
     @Test()
     public void endToEndPlaceOrderWithOneProduct(){
 
-        productsSteps.
-                addProductToCartAndGoToCart(randomNumber1To6());
-        cartSteps.
-                pressCheckoutButton();
-        checkoutOneSteps.
-                fillInInputFieldsAndPressNext();
-        checkoutTwoSteps.
-                checkTotalPriceValue().
-                pressFinishButton();
-        confirmationSteps.
-                checkPageIsDisplayed().
-                clickBackHomeButton();
-        headerSteps.
-                checkPageIsDisplayed();
-        productsSteps.
-                checkPageIsDisplayed();
+        productsSteps.addProductToCartAndGoToCart(randomNumber1To6());
+        cartSteps.pressCheckoutButton();
+        checkoutOneSteps.fillInInputFieldsAndPressNext();
+        checkoutTwoSteps.checkTotalPriceValue();
+        checkoutTwoSteps.pressFinishButton();
+        confirmationSteps.checkPageIsDisplayed();
+        confirmationSteps.clickBackHomeButton();
+        headerSteps.checkPageIsDisplayed();
+        productsSteps.checkPageIsDisplayed();
     }
 
     @Test

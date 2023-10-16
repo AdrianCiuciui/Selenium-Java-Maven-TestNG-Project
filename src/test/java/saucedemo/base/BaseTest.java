@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class BaseTest{
 
-    public static WebDriver driver;
+    public WebDriver driver;
     private static final Properties PROPERTIES = new Properties();
     protected static boolean[] isProductInCart = new boolean[6];
 

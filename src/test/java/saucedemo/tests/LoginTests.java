@@ -41,9 +41,8 @@ public class LoginTests extends BaseTest{
     @Test(priority = 1, dataProvider = "userType")
     public void loginWithNonRegularUser(String username){
 
-        loginSteps.
-                loginWithUsername(username, getPassword()).
-                checkPageAfterLogin(username);
+        loginSteps.loginWithUsername(username, getPassword());
+        loginSteps.checkPageAfterLogin(username);
     }
 
 
@@ -63,9 +62,8 @@ public class LoginTests extends BaseTest{
     @Test(priority = 5, dataProvider = "invalidCredentials")
     public void loginWithInvalidCredentials(String username, String password){
 
-        loginSteps.
-                loginWithUsername(username, password).
-                checkErrorIndicatorsOnLoginAndTheirClear();
+        loginSteps.loginWithUsername(username, password);
+        loginSteps.checkErrorIndicatorsOnLoginAndTheirClear();
     }
 
 }

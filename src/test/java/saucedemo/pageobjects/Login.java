@@ -17,24 +17,18 @@ public class Login extends BasePageObject {
     private final By getErrorAtCredentialsButton = xpath("//h3[@data-test='error']//button");
     private final By errorTextMessageIsHidden = xpath("//div[@class='error-message-container']");
 
-    public Login inputUsername(String username) {
-
+    public void inputUsername(String username) {
         driver.findElement(inputFieldUsername).clear();
         driver.findElement(inputFieldUsername).sendKeys(username);
-        return this;
     }
 
-    public Login inputPassword(String password){
-
+    public void inputPassword(String password){
         driver.findElement(inputFieldPassword).clear();
         driver.findElement(inputFieldPassword).sendKeys(password);
-        return this;
     }
 
-    public Login clickLoginButton(){
-
+    public void clickLoginButton(){
         driver.findElement(buttonLogin).click();
-        return this;
     }
 
     public boolean isAllPageElementsDisplayed(){
@@ -51,10 +45,8 @@ public class Login extends BasePageObject {
             driver.findElement(errorIconInInputField).isDisplayed());
     }
 
-    public Login clickToCloseErrorMessage(){
-
+    public void clickToCloseErrorMessage(){
         driver.findElement(getErrorAtCredentialsButton).click();
-        return this;
     }
 
 }

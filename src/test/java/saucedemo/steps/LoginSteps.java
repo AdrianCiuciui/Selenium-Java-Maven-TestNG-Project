@@ -14,7 +14,7 @@ import static saucedemo.base.BaseTest.getUsernameLocked;
 import static saucedemo.base.BaseTest.getUsernameNotRegistered;
 import static saucedemo.base.BaseTest.getUsernameRegular;
 
-public class LoginSteps {
+public class LoginSteps extends BasePageObject{
 
     private final Login login;
 
@@ -23,28 +23,25 @@ public class LoginSteps {
     }
 
 
-    public LoginSteps loginWithUsername(String username, String password){
+    public void loginWithUsername(String username, String password){
 
-        String currentURL = BasePageObject.driver.getCurrentUrl();
+        String currentURL = driver.getCurrentUrl();
         assertThat(currentURL, containsString(getURLBase()));
         assertThat(login.isAllPageElementsDisplayed(), is(true));
-        login.inputUsername(username).
-                inputPassword(password).
-                clickLoginButton();
-        return this;
+        login.inputUsername(username);
+        login.inputPassword(password);
+        login.clickLoginButton();
     }
 
-    public LoginSteps loginWithUsernameRegular(){
-
-        login.inputUsername(getUsernameRegular()).
-                inputPassword(getPassword()).
-                clickLoginButton();
-        return this;
+    public void loginWithUsernameRegular(){
+        login.inputUsername(getUsernameRegular());
+        login.inputPassword(getPassword());
+        login.clickLoginButton();
     }
 
-    public LoginSteps checkPageAfterLogin(String username){
+    public void checkPageAfterLogin(String username){
 
-        String currentURL = BasePageObject.driver.getCurrentUrl();
+        String currentURL = driver.getCurrentUrl();
         if (username.equals(getUsernameLocked())) {
             assertThat(currentURL, containsString(getURLBase()));
         } else if (username.equals(getUsernameNotRegistered())) {
@@ -54,14 +51,11 @@ public class LoginSteps {
         } else {
             assertThat(currentURL, containsString(getURLInventory()));
         }
-        return this;
     }
 
-    public LoginSteps checkErrorIndicatorsOnLoginAndTheirClear(){
-
+    public void checkErrorIndicatorsOnLoginAndTheirClear(){
         assertThat(login.isPageElementesWithErrorMessageDisplayed(), is(true));
         login.clickToCloseErrorMessage();
         assertThat(login.isAllPageElementsDisplayed(), is(true));
-        return this;
     }
 }

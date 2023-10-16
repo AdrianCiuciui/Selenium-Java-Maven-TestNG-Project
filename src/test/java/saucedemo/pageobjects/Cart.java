@@ -15,28 +15,20 @@ public class Cart extends BasePageObject {
     private final String labelDescription = "(//*[@class='inventory_item_desc'])[%d]";
     private final String labelPrice = "(//*[@class='inventory_item_price'])[%d]";
 
-    public Cart clickCheckoutButton(){
-
+    public void clickCheckoutButton(){
         driver.findElement(buttonCheckout).click();
-        return this;
     }
 
-    public Cart clickContinueShoppingButton(){
-
+    public void clickContinueShoppingButton(){
         driver.findElement(buttonContinueShopping).click();
-        return this;
     }
 
-    public Cart clickProductRemoveButton(int index){
-
+    public void clickProductRemoveButton(int index){
         driver.findElement(By.xpath(String.format(buttonProductRemove, index))).click();
-        return this;
     }
 
-    public Cart clickProductTitle(int index){
-
+    public void clickProductTitle(int index){
         driver.findElement(By.xpath(String.format(buttonProductTitle, index))).click();
-        return this;
     }
 
     public String getProductDescription(int index){
