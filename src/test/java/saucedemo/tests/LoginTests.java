@@ -38,7 +38,7 @@ public class LoginTests extends BaseTest {
      * @param username taken from the Dataprovider
      */
     @Test(priority = 1, dataProvider = "userType")
-    public void loginWithNonRegularUser(String username){
+    public void loginWithEachUser(String username){
 
         loginSteps.
                 loginWithUsername(username, getPassword()).

@@ -3,8 +3,6 @@ package saucedemo.steps;
 import org.openqa.selenium.WebDriver;
 import saucedemo.pageobjects.CheckoutStepOne;
 
-import java.util.Random;
-
 import static saucedemo.base.BasePageObject.randomAlphaNumeric;
 
 public class CheckoutOneSteps {
