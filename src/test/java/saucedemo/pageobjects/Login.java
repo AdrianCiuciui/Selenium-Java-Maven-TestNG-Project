@@ -7,8 +7,6 @@ import saucedemo.base.BasePageObject;
 import static org.openqa.selenium.By.xpath;
 
 public class Login extends BasePageObject {
-
-
     private final By logo = xpath("//div[@class='login_logo']");
     private final By loginCredentials = xpath("//div[@class='login_credentials_wrap-inner']");
     private final By inputFieldUsername = xpath("//input[@id='user-name']");
@@ -19,30 +17,18 @@ public class Login extends BasePageObject {
     private final By getErrorAtCredentialsButton = xpath("//h3[@data-test='error']//button");
     private final By errorTextMessageIsHidden = xpath("//div[@class='error-message-container']");
 
-
-    public Login(WebDriver driver) {
-        super(driver);
-    }
-
-
-    public Login inputUsername(String username) {
-
+    public void inputUsername(String username) {
         driver.findElement(inputFieldUsername).clear();
         driver.findElement(inputFieldUsername).sendKeys(username);
-        return this;
     }
 
-    public Login inputPassword(String password){
-
+    public void inputPassword(String password){
         driver.findElement(inputFieldPassword).clear();
         driver.findElement(inputFieldPassword).sendKeys(password);
-        return this;
     }
 
-    public Login clickLoginButton(){
-
+    public void clickLoginButton(){
         driver.findElement(buttonLogin).click();
-        return this;
     }
 
     public boolean isAllPageElementsDisplayed(){
@@ -59,10 +45,8 @@ public class Login extends BasePageObject {
             driver.findElement(errorIconInInputField).isDisplayed());
     }
 
-    public Login clickToCloseErrorMessage(){
-
+    public void clickToCloseErrorMessage(){
         driver.findElement(getErrorAtCredentialsButton).click();
-        return this;
     }
 
 }

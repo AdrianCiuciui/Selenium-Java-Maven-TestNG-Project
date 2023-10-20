@@ -6,18 +6,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class CheckoutTwoSteps {
-
-    protected WebDriver driver;
     private final CheckoutStepTwo checkoutStepTwo;
 
-    public CheckoutTwoSteps(WebDriver driver) {
-
-        this.driver = driver;
-        checkoutStepTwo = new CheckoutStepTwo(driver);
+    public CheckoutTwoSteps() {
+        checkoutStepTwo = new CheckoutStepTwo();
     }
 
-
-    public CheckoutTwoSteps checkTotalPriceValue(){
+    public void checkTotalPriceValue(){
 
         double priceTotal = Double.parseDouble(checkoutStepTwo.getProductsTotalPrice());
         double priceTax = Double.parseDouble(checkoutStepTwo.getProductTaxPrice());
@@ -27,13 +22,10 @@ public class CheckoutTwoSteps {
         String formattedSum = String.format("%.2f", sumFromTotalAndTax);
 
         assertThat(formattedSum, is(priceFinalTotal));
-        return this;
     }
 
-    public CheckoutTwoSteps pressFinishButton(){
-
+    public void pressFinishButton(){
         checkoutStepTwo.clickFinishButton();
-        return this;
     }
 
 }

@@ -1,4 +1,6 @@
 package saucedemo.steps;
 
-public class MenuSteps {
+import saucedemo.base.BasePageObject;
+
+public class MenuSteps extends BasePageObject {
 }

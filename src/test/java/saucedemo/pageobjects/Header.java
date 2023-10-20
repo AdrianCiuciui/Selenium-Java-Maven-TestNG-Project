@@ -18,12 +18,6 @@ public class Header extends BasePageObject {
     private final By filterOptionsLowHigh = xpath("//option[@value='lohi']");
     private final By filterOptionsHighLow = xpath("//option[@value='hilo']");
 
-
-    public Header(WebDriver driver) {
-        super(driver);
-    }
-
-
     public boolean isTitleDisplayed(){
 
         return driver.findElement(pageTitle).isDisplayed();

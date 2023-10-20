@@ -8,17 +8,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class ProductsSteps {
-
-    protected WebDriver driver;
     private final Products products;
     private final Header header;
 
-    public ProductsSteps(WebDriver driver) {
-
-        this.driver = driver;
-        products = new Products(driver);
-
-        header = new Header(driver);
+    public ProductsSteps() {
+        products = new Products();
+        header = new Header();
     }
 
 
