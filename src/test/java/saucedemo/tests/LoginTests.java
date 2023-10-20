@@ -3,7 +3,6 @@ package saucedemo.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import saucedemo.base.BasePageObject;
 import saucedemo.base.BaseTest;
 import saucedemo.steps.LoginSteps;
 
@@ -63,7 +62,7 @@ public class LoginTests extends BaseTest{
     public void loginWithInvalidCredentials(String username, String password){
 
         loginSteps.loginWithUsername(username, password);
-        loginSteps.checkErrorIndicatorsOnLoginAndTheirClear();
+        loginSteps.checkErrorIndicatorsAreDisplayedAndThatTheyCanBeClearedAway();
     }
 
 }

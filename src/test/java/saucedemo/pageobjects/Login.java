@@ -1,9 +1,10 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import saucedemo.base.BasePageObject;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.openqa.selenium.By.xpath;
 
 public class Login extends BasePageObject {
@@ -31,18 +32,17 @@ public class Login extends BasePageObject {
         driver.findElement(buttonLogin).click();
     }
 
-    public boolean isAllPageElementsDisplayed(){
+    public void checkAllPageElementsAreDisplayed(){
 
-        return (
-            driver.findElement(logo).isDisplayed() &&
-            driver.findElement(loginCredentials).isDisplayed() &&
-            driver.findElement(errorTextMessageIsHidden).isDisplayed());
+        assertThat("Logo not displayed", driver.findElement(logo).isDisplayed(), is(true));
+        assertThat("Login credentials not displayed", driver.findElement(loginCredentials).isDisplayed(), is(true));
+        assertThat("Error text message is not hidden", driver.findElement(errorTextMessageIsHidden).isDisplayed(), is(true));
     }
 
-    public boolean isPageElementesWithErrorMessageDisplayed(){
-        return (
-            driver.findElement(errorTextMessage).isDisplayed() &&
-            driver.findElement(errorIconInInputField).isDisplayed());
+    public void checkErrorMessageAndRedInputFieldsAreDisplayed(){
+
+        assertThat(driver.findElement(errorTextMessage).isDisplayed(), is(true));
+        assertThat(driver.findElement(errorIconInInputField).isDisplayed(), is(true));
     }
 
     public void clickToCloseErrorMessage(){

@@ -1,7 +1,6 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import static org.openqa.selenium.By.xpath;
 
@@ -13,16 +12,14 @@ public class CheckoutStepTwo extends Cart {
     private final By buttonCancel = xpath("//button[@id='cancel']");
     private final By buttonFinish = xpath("//button[@id='finish']");
 
-    public CheckoutStepTwo clickCancelButton(){
+    public void clickCancelButton(){
 
         driver.findElement(buttonCancel).click();
-        return this;
     }
 
-    public CheckoutStepTwo clickFinishButton(){
+    public void clickFinishButton(){
 
         driver.findElement(buttonFinish).click();
-        return this;
     }
 
     public String getProductsTotalPrice(){

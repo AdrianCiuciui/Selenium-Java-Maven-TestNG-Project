@@ -1,6 +1,5 @@
 package saucedemo.steps;
 
-import org.openqa.selenium.WebDriver;
 import saucedemo.pageobjects.Header;
 import saucedemo.pageobjects.Products;
 
@@ -18,19 +17,16 @@ public class ProductsSteps {
 
 
 
-    public ProductsSteps checkPageIsDisplayed(){
+    public void checkPageIsDisplayed(){
 
-        assertThat(header.isTitleDisplayed(), is(true));
-        assertThat(products.isPageDisplayed(), is(true));
-        return this;
+        header.checkTitleIsDisplayed();
+        products.checkPageIsDisplayed();
     }
 
-    public ProductsSteps addProductToCartAndGoToCart(int index){
+    public void addProductToCartAndGoToCart(int index){
 
         products.clickAddToCart(index);
         header.clickCartButton();
-
-        return this;
     }
 
 }

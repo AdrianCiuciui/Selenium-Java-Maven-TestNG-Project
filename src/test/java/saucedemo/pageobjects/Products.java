@@ -1,8 +1,10 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import saucedemo.base.BasePageObject;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class Products extends BasePageObject {
 
@@ -15,14 +17,14 @@ public class Products extends BasePageObject {
     private final String labelProductPrice = buttonProductAllSection + "//*[@class='inventory_item_price']";
 
 
-    public boolean isPageDisplayed(){
-        return (
-                driver.findElement(By.xpath(String.format(buttonProductAllSection, 1))).isDisplayed() &&
-                driver.findElement(By.xpath(String.format(buttonProductImage, 2))).isDisplayed() &&
-                driver.findElement(By.xpath(String.format(buttonProductTitle, 3))).isDisplayed() &&
-                driver.findElement(By.xpath(String.format(buttonProductAddToCart, 4))).isDisplayed() &&
-                driver.findElement(By.xpath(String.format(labelProductDescription, 5))).isDisplayed() &&
-                driver.findElement(By.xpath(String.format(labelProductPrice, 6))).isDisplayed());
+    public void checkPageIsDisplayed(){
+
+        assertThat(driver.findElement(By.xpath(String.format(buttonProductAllSection, 1))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(buttonProductImage, 2))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(buttonProductTitle, 3))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(buttonProductAddToCart, 4))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(labelProductDescription, 5))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(labelProductPrice, 6))).isDisplayed(), is(true));
     }
 
     public void clickProductImage(int index){

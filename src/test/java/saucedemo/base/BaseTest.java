@@ -31,12 +31,12 @@ public class BaseTest{
     @BeforeMethod
     public void setup() {
 
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromiumdriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
         BasePageObject.setDriver(driver);
-        waitUntilTimeIsPassed(1);
+        waitImplicit(1);
     }
 
     public static String getUsernameRegular(){
@@ -118,11 +118,11 @@ public class BaseTest{
     @AfterMethod
     public void tearDown() {
 
-        waitUntilTimeIsPassed(1);
+        waitImplicit(1);
         driver.quit();
     }
 
-    public static void waitUntilTimeIsPassed(long seconds){
+    public static void waitImplicit(long seconds){
 
         try{
             Thread.sleep(seconds * 1000);
