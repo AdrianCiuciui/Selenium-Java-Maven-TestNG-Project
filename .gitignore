@@ -1,0 +1,9 @@
+/.idea/
+/target/
+/shelf/
+workspace.xml
+vcs.xml
+compiler.xml
+encondings.xml
+jarRepositories.xml
+misc.xml

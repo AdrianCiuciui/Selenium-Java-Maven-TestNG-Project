@@ -15,42 +15,27 @@ public class Product extends BasePageObject {
     private final By labelProductDescription = xpath("//div[@class='inventory_details_name large_size']");
     private final By labelProductPrice = xpath("//div[@class='inventory_details_price']");
 
-
-    public Product(WebDriver driver) {
-        super(driver);
-    }
-
-
-    public Product clickBackToProducts(){
-
+    public void clickBackToProducts(){
         driver.findElement(buttonBackToProducts).click();
-        return this;
     }
 
-    public Product clickAddToCart(){
-
+    public void clickAddToCart(){
         driver.findElement(buttonAddToCart).click();
-        return this;
     }
 
-    public Product clickRemoveFromCart(){
-
+    public void clickRemoveFromCart(){
         driver.findElement(buttonRemoveFromCart).click();
-        return this;
     }
 
     public String getProductName(){
-
         return driver.findElement(labelProductName).getText();
     }
 
     public String getProductDescription(){
-
         return driver.findElement(labelProductDescription).getText();
     }
 
     public String getProductPrice(){
-
         return driver.findElement(labelProductPrice).getText();
     }
 

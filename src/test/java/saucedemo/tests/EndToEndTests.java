@@ -20,13 +20,13 @@ public class EndToEndTests extends BaseTest{
     @BeforeMethod
     public void setup(){
         super.setup();
-        loginSteps = new LoginSteps(driver);
-        productsSteps = new ProductsSteps(driver);
-        cartSteps = new CartSteps(driver);
-        checkoutOneSteps = new CheckoutOneSteps(driver);
-        checkoutTwoSteps = new CheckoutTwoSteps(driver);
-        confirmationSteps = new OrderConfirmationSteps(driver);
-        headerSteps = new HeaderSteps(driver);
+        loginSteps = new LoginSteps();
+        productsSteps = new ProductsSteps();
+        cartSteps = new CartSteps();
+        checkoutOneSteps = new CheckoutOneSteps();
+        checkoutTwoSteps = new CheckoutTwoSteps();
+        confirmationSteps = new OrderConfirmationSteps();
+        headerSteps = new HeaderSteps();
 
         loginSteps.loginWithUsernameRegular();
     }
@@ -39,22 +39,15 @@ public class EndToEndTests extends BaseTest{
     @Test()
     public void endToEndPlaceOrderWithOneProduct(){
 
-        productsSteps.
-                addProductToCartAndGoToCart(randomNumber1To6());
-        cartSteps.
-                pressCheckoutButton();
-        checkoutOneSteps.
-                fillInInputFieldsAndPressNext();
-        checkoutTwoSteps.
-                checkTotalPriceValue().
-                pressFinishButton();
-        confirmationSteps.
-                checkPageIsDisplayed().
-                clickBackHomeButton();
-        headerSteps.
-                checkPageIsDisplayed();
-        productsSteps.
-                checkPageIsDisplayed();
+        productsSteps.addProductToCartAndGoToCart(randomNumber1To6());
+        cartSteps.pressCheckoutButton();
+        checkoutOneSteps.fillInInputFieldsAndPressNext();
+        checkoutTwoSteps.checkTotalPriceValue();
+        checkoutTwoSteps.pressFinishButton();
+        confirmationSteps.checkPageIsDisplayed();
+        confirmationSteps.clickBackHomeButton();
+        headerSteps.checkPageIsDisplayed();
+        productsSteps.checkPageIsDisplayed();
     }
 
     @Test

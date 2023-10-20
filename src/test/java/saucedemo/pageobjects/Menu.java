@@ -15,44 +15,29 @@ public class Menu extends BasePageObject {
     private final By buttonCloseMenu = xpath("//button[@id='react-burger-cross-btn']");
     private final By menuBar = xpath("//div[@class='bm-menu']");
 
-    public Menu(WebDriver driver) {
-        super(driver);
-    }
-
-
     public boolean isMenuDisplayed(){
 
         return driver.findElement(menuBar).isDisplayed();
     }
 
-    public Menu clickOnProductsOption(){
-
+    public void clickOnProductsOption(){
         driver.findElement(buttonProducts).click();
-        return this;
     }
 
-    public Menu clickOnAboutOption(){
-
+    public void clickOnAboutOption(){
         driver.findElement(buttonAbout).click();
-        return this;
     }
 
-    public Menu clickOnLogoutOption(){
-
+    public void clickOnLogoutOption(){
         driver.findElement(buttonLogout).click();
-        return this;
     }
 
-    public Menu clickOnResetAppState(){
-
+    public void clickOnResetAppState(){
         driver.findElement(buttonResetAppState).click();
-        return this;
     }
 
-    public Menu clickOnCloseMenu(){
-
+    public void clickOnCloseMenu(){
         driver.findElement(buttonCloseMenu).click();
-        return this;
     }
 
 }
