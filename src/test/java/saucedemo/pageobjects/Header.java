@@ -60,7 +60,7 @@ public class Header extends BasePageObject {
     }
 
     public String getCartBadgeValue(){
-//todo   daca nu merge, incearca cu get attribute
+
         return driver.findElement(cartBadge).getText();
     }
 

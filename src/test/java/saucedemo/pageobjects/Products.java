@@ -44,11 +44,11 @@ public class Products extends BasePageObject {
     }
 
     public String getProductDescription(int index){
-        return driver.findElement(By.xpath(String.format(labelProductDescription, index))).getText(); //todo    confirm it works
+        return driver.findElement(By.xpath(String.format(labelProductDescription, index))).getText();
     }
 
     public String getProductPrice(int index){
-        String price = driver.findElement(By.xpath(String.format(labelProductPrice, index))).getText(); //todo  confirm it works
+        String price = driver.findElement(By.xpath(String.format(labelProductPrice, index))).getText();
         return price.substring(1);
     }
 

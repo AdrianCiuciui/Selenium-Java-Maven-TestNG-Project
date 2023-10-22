@@ -64,7 +64,6 @@ public class EndToEndTests extends BaseTest{
         headerSteps.checkPageIsDisplayed();
         productsSteps.checkPageIsDisplayed();
         header.clickMenuButton();
-        waitImplicit(1);//todo      remove after explicit wait implementation
         menu.clickOnLogoutOption();
         login.checkAllPageElementsAreDisplayed();
     }

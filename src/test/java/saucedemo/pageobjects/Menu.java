@@ -1,6 +1,7 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import saucedemo.base.BasePageObject;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,7 +31,10 @@ public class Menu extends BasePageObject {
     }
 
     public void clickOnLogoutOption(){
-        driver.findElement(buttonLogout).click();
+
+        WebElement logoutButton = driver.findElement(buttonLogout);
+        waitExplicit(logoutButton);
+        logoutButton.click();
     }
 
     public void clickOnResetAppState(){
