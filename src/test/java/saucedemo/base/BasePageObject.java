@@ -16,7 +16,7 @@ public class BasePageObject {
     public static void setDriver(WebDriver driver){
 
         BasePageObject.driver = driver;
-        Duration timeoutDuration = Duration.ofSeconds(20);
+        Duration timeoutDuration = Duration.ofSeconds(12);
         driverWait = new WebDriverWait(driver, timeoutDuration);
     }
 

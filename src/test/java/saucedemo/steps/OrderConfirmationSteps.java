@@ -4,7 +4,8 @@ import saucedemo.pageobjects.OrderConfirmation;
 
 
 public class OrderConfirmationSteps {
-    private OrderConfirmation orderConfirmation;
+
+    private final OrderConfirmation orderConfirmation;
 
     public OrderConfirmationSteps() {
         this.orderConfirmation = new OrderConfirmation();

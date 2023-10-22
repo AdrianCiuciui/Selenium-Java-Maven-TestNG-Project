@@ -5,7 +5,6 @@ import saucedemo.pageobjects.Login;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
 import static saucedemo.base.BaseTest.getPassword;
 import static saucedemo.base.BaseTest.getURLBase;
 import static saucedemo.base.BaseTest.getURLInventory;
