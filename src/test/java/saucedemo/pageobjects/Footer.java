@@ -1,9 +1,10 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import saucedemo.base.BasePageObject;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.openqa.selenium.By.xpath;
 
 public class Footer extends BasePageObject {
@@ -14,17 +15,16 @@ public class Footer extends BasePageObject {
     private final By socialFacebook = xpath("//li[@class='social_facebook']");
     private final By socialLinkedin = xpath("//li[@class='social_LinkedIn']");
 
-    public boolean isFooterDisplayed(){
+    public void checkFooterIsDisplayed(){
 
-        return driver.findElement(footerArea).isDisplayed();
+        assertThat(driver.findElement(footerArea).isDisplayed(), is(true));
     }
 
-    public boolean isSocialsDisplayed(){
+    public void checkSocialsAreDisplayed(){
 
-        return (
-            driver.findElement(socialTwitter).isDisplayed() &&
-            driver.findElement(socialFacebook).isDisplayed() &&
-            driver.findElement(socialLinkedin).isDisplayed());
+        assertThat(driver.findElement(socialTwitter).isDisplayed(), is(true));
+        assertThat(driver.findElement(socialFacebook).isDisplayed(), is(true));
+        assertThat(driver.findElement(socialLinkedin).isDisplayed(), is(true));
     }
 
     public String getCopyrightInformation(){

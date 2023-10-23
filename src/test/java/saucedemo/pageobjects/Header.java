@@ -1,9 +1,10 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import saucedemo.base.BasePageObject;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.openqa.selenium.By.xpath;
 
 public class Header extends BasePageObject {
@@ -18,55 +19,48 @@ public class Header extends BasePageObject {
     private final By filterOptionsLowHigh = xpath("//option[@value='lohi']");
     private final By filterOptionsHighLow = xpath("//option[@value='hilo']");
 
-    public boolean isTitleDisplayed(){
+    public void checkTitleIsDisplayed(){
 
-        return driver.findElement(pageTitle).isDisplayed();
+        assertThat(driver.findElement(pageTitle).isDisplayed(), is(true)) ;
     }
 
-    public Header clickMenuButton(){
+    public void clickMenuButton(){
 
         driver.findElement(buttonMenu).click();
-        return this;
     }
 
-    public Header clickCartButton(){
+    public void clickCartButton(){
 
         driver.findElement(buttonCart).click();
-        return this;
     }
 
-    public Header clickFilterButton(){
+    public void clickFilterButton(){
 
         driver.findElement(buttonFilter).click();
-        return this;
     }
 
-    public Header clickFilterOptionAZ(){
+    public void clickFilterOptionAZ(){
 
         driver.findElement(filterOptionsAZ).click();
-        return this;
     }
 
-    public Header clickFilterOptionZA(){
+    public void clickFilterOptionZA(){
 
         driver.findElement(filterOptionsZA).click();
-        return this;
     }
 
-    public Header clickFilterOptionLowToHigh(){
+    public void clickFilterOptionLowToHigh(){
 
         driver.findElement(filterOptionsLowHigh).click();
-        return this;
     }
 
-    public Header clickFilterOptionHighToLow(){
+    public void clickFilterOptionHighToLow(){
 
         driver.findElement(filterOptionsHighLow).click();
-        return this;
     }
 
     public String getCartBadgeValue(){
-//todo   daca nu merge, incearca cu get attribute
+
         return driver.findElement(cartBadge).getText();
     }
 

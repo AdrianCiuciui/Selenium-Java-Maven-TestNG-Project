@@ -1,6 +1,5 @@
 package saucedemo.steps;
 
-import org.openqa.selenium.WebDriver;
 import saucedemo.pageobjects.CheckoutStepTwo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

@@ -1,9 +1,11 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import saucedemo.base.BasePageObject;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.openqa.selenium.By.xpath;
 
 public class Menu extends BasePageObject {
@@ -15,9 +17,9 @@ public class Menu extends BasePageObject {
     private final By buttonCloseMenu = xpath("//button[@id='react-burger-cross-btn']");
     private final By menuBar = xpath("//div[@class='bm-menu']");
 
-    public boolean isMenuDisplayed(){
+    public void checkMenuIsDisplayed(){
 
-        return driver.findElement(menuBar).isDisplayed();
+        assertThat(driver.findElement(menuBar).isDisplayed(), is(true));
     }
 
     public void clickOnProductsOption(){
@@ -29,7 +31,10 @@ public class Menu extends BasePageObject {
     }
 
     public void clickOnLogoutOption(){
-        driver.findElement(buttonLogout).click();
+
+        WebElement logoutButton = driver.findElement(buttonLogout);
+        waitExplicit(logoutButton);
+        logoutButton.click();
     }
 
     public void clickOnResetAppState(){

@@ -1,12 +1,10 @@
 package saucedemo.steps;
 
-import org.openqa.selenium.WebDriver;
 import saucedemo.base.BasePageObject;
 import saucedemo.pageobjects.Login;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
 import static saucedemo.base.BaseTest.getPassword;
 import static saucedemo.base.BaseTest.getURLBase;
 import static saucedemo.base.BaseTest.getURLInventory;
@@ -27,7 +25,7 @@ public class LoginSteps extends BasePageObject{
 
         String currentURL = driver.getCurrentUrl();
         assertThat(currentURL, containsString(getURLBase()));
-        assertThat(login.isAllPageElementsDisplayed(), is(true));
+        login.checkAllPageElementsAreDisplayed();
         login.inputUsername(username);
         login.inputPassword(password);
         login.clickLoginButton();
@@ -45,17 +43,18 @@ public class LoginSteps extends BasePageObject{
         if (username.equals(getUsernameLocked())) {
             assertThat(currentURL, containsString(getURLBase()));
         } else if (username.equals(getUsernameNotRegistered())) {
-            assertThat(login.isPageElementesWithErrorMessageDisplayed(), is(true));
+            login.checkErrorMessageAndRedInputFieldsAreDisplayed();
             login.clickToCloseErrorMessage();
-            assertThat(login.isAllPageElementsDisplayed(), is(true));
+            login.checkAllPageElementsAreDisplayed();
         } else {
             assertThat(currentURL, containsString(getURLInventory()));
         }
     }
 
-    public void checkErrorIndicatorsOnLoginAndTheirClear(){
-        assertThat(login.isPageElementesWithErrorMessageDisplayed(), is(true));
+    public void checkErrorIndicatorsAreDisplayedAndThatTheyCanBeClearedAway(){
+
+        login.checkErrorMessageAndRedInputFieldsAreDisplayed();
         login.clickToCloseErrorMessage();
-        assertThat(login.isAllPageElementsDisplayed(), is(true));
+        login.checkAllPageElementsAreDisplayed();
     }
 }

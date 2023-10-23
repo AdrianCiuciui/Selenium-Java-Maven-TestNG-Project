@@ -9,6 +9,8 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -16,10 +18,10 @@ public class BaseTest{
 
     public WebDriver driver;
     private static final Properties PROPERTIES = new Properties();
-    protected static boolean[] isProductInCart = new boolean[6];
+    public static List<Product> productsOrdered = new ArrayList<>();
 
     @BeforeSuite
-    public  void readPropertiesFile() {
+    public void readPropertiesFile() {
     try {
         FileInputStream input = new FileInputStream("src/test/java/saucedemo/base/resourcesSaucedemo.properties");
         PROPERTIES.load(input);
@@ -31,12 +33,12 @@ public class BaseTest{
     @BeforeMethod
     public void setup() {
 
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromiumdriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
         BasePageObject.setDriver(driver);
-        waitUntilTimeIsPassed(1);
+        waitImplicit(1);
     }
 
     public static String getUsernameRegular(){
@@ -104,25 +106,27 @@ public class BaseTest{
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("/checkout-complete.html"));
     }
 
-    public static int randomNumber1To6(){
+    public static int getTotalNumberOfProducts(){
 
+        String count = PROPERTIES.getProperty("products.count");
+        return Integer.parseInt(count);
+    }
+
+    public static int randomNumber0ToTotalAvailableProducts(){
+//todo  need to add validation that it will not return duplicate number
         Random random = new Random();
-        return random.nextInt(6) + 1;
+        return random.nextInt(getTotalNumberOfProducts());
     }
 
-    public static void changeProductsArrayBooleanStatus(){
-
-
-    }
 
     @AfterMethod
     public void tearDown() {
 
-        waitUntilTimeIsPassed(1);
+        waitImplicit(2);
         driver.quit();
     }
 
-    public static void waitUntilTimeIsPassed(long seconds){
+    public static void waitImplicit(long seconds){
 
         try{
             Thread.sleep(seconds * 1000);

@@ -1,7 +1,6 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import saucedemo.base.BasePageObject;
 
@@ -22,40 +21,34 @@ public class CheckoutStepOne extends BasePageObject {
     private final By errorInputFields_NotUnique = xpath("//input[@class='input_error form_input error']");
     private final int NO_OF_INPUT_FIELDS = 3;
 
-    public CheckoutStepOne clickCancelButton(){
+    public void clickCancelButton(){
 
         driver.findElement(buttonCancel).click();
-        return this;
     }
 
-    public CheckoutStepOne clickContinueButton(){
+    public void clickContinueButton(){
 
         driver.findElement(buttonContinue).click();
-        return this;
     }
 
-    public CheckoutStepOne clickCloseErrorMessageButton(){
+    public void clickCloseErrorMessageButton(){
 
         driver.findElement(buttonErrorCloseMessage).click();
-        return this;
     }
 
-    public CheckoutStepOne inputFirstName(String input){
+    public void inputFirstName(String input){
 
         driver.findElement(inputFirstName).sendKeys(input);
-        return this;
     }
 
-    public CheckoutStepOne inputLastName(String input){
+    public void inputLastName(String input){
 
         driver.findElement(inputLastName).sendKeys(input);
-        return this;
     }
 
-    public CheckoutStepOne inputPostalCode(String input){
+    public void inputPostalCode(String input){
 
         driver.findElement(inputPostalCode).sendKeys(input);
-        return this;
     }
 
     public boolean isErrorMessageDisplayed(){

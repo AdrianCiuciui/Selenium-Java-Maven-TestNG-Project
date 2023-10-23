@@ -1,9 +1,10 @@
 package saucedemo.pageobjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import saucedemo.base.BasePageObject;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.By.xpath;
 
 public class OrderConfirmation extends BasePageObject {
@@ -17,16 +18,16 @@ public class OrderConfirmation extends BasePageObject {
         driver.findElement(buttonBackHome).click();
     }
 
-    public boolean isSuccessImageDisplayed(){
-        return driver.findElement(labelSuccessIcon).isDisplayed();
+    public void checkSuccessImageIsDisplayed(){
+        assertThat(driver.findElement(labelSuccessIcon).isDisplayed(), is(true) );
     }
 
-    public boolean isMessageHeaderDisplayed(){
-        return driver.findElement(labelSuccessMessageHeader).isDisplayed();
+    public void checkMessageHeaderIsDisplayed(){
+        assertThat(driver.findElement(labelSuccessMessageHeader).isDisplayed(), is(true));
     }
 
-    public boolean isMessageDescriptionDisplayed(){
-        return driver.findElement(labelSuccessMessageDescription).isDisplayed();
+    public void checkMessageDescriptionIsDisplayed(){
+        assertThat(driver.findElement(labelSuccessMessageDescription).isDisplayed(), is(true));
     }
 
 }

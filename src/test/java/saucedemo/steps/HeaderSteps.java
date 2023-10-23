@@ -1,9 +1,6 @@
 package saucedemo.steps;
 
-import org.openqa.selenium.WebDriver;
 import saucedemo.pageobjects.Header;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 public class HeaderSteps {
     private final Header header;
@@ -13,7 +10,7 @@ public class HeaderSteps {
     }
 
     public void checkPageIsDisplayed(){
-        assertThat(header.isTitleDisplayed(), is(true));
+        header.checkTitleIsDisplayed();
     }
 
 }
