@@ -6,7 +6,7 @@ import saucedemo.base.BasePageObject;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Products extends BasePageObject {
+public class Products extends BasePageObject {//todo    \\..//
 
     private final String buttonProductImage = "//*[@class='inventory_item_img']//*[@id='item_%d_img_link']";
     private final String buttonProductTitle = "//*[@class='inventory_item_label']//*[@id='item_%d_title_link']";
@@ -18,11 +18,12 @@ public class Products extends BasePageObject {
 
     public void checkPageIsDisplayed(){
 
-        assertThat(driver.findElement(By.xpath(String.format(buttonProductImage, 0))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(buttonProductTitle, 1))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(buttonProductAddToCart, 2))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(labelProductDescription, 3))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(labelProductPrice, 4))).isDisplayed(), is(true));
+        int index = 0;
+        assertThat(driver.findElement(By.xpath(String.format(buttonProductImage, index++))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(buttonProductTitle, index++))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(buttonProductAddToCart, index++))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(labelProductDescription, index++))).isDisplayed(), is(true));
+        assertThat(driver.findElement(By.xpath(String.format(labelProductPrice, index))).isDisplayed(), is(true));
     }
 
     public void clickProductImage(int index){

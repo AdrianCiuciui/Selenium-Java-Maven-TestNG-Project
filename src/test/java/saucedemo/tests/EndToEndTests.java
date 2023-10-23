@@ -66,7 +66,7 @@ public class EndToEndTests extends BaseTest{
      * There is no need to clear the cart from existing products because
      * the user is unique to the browser instance. (each test has it`s own browser instance)
      */
-    @Test()
+    @Test(priority = 1)
     public void endToEndPlaceOrderWithOneProduct(){
 
         productsSteps.addProductToCartAndGoToCart(randomNumber0ToTotalAvailableProducts());
@@ -83,15 +83,13 @@ public class EndToEndTests extends BaseTest{
         login.checkAllPageElementsAreDisplayed();
     }
 
-    @Test
+    @Test(priority = 2)
     public void endToEndPlaceOrderWithMultipleProductsCheckTotal(){
 
-//        int indexForFirst = randomNumber0ToTotalAvailableProducts();
-//        int indexForSecond = randomNumber0ToTotalAvailableProducts();
-//        int indexForThird = randomNumber0ToTotalAvailableProducts();
-        int indexForFirst = 1;
-        int indexForSecond = 3;
-        int indexForThird = 5;
+        int indexForFirst = randomNumber0ToTotalAvailableProducts();
+        int indexForSecond = randomNumber0ToTotalAvailableProducts();
+        int indexForThird = randomNumber0ToTotalAvailableProducts();
+
         System.out.println("indexes: " + indexForFirst + ", " + indexForSecond + ", " + indexForThird);
 
         productsSteps.setUpTheProducts();
@@ -115,7 +113,6 @@ public class EndToEndTests extends BaseTest{
 
         //todo  need to cover the case where there are multiple products in the cart
         checkoutTwoSteps.checkTotalPriceValue();
-
         checkoutStepTwo.clickFinishButton();
         confirmationSteps.checkPageIsDisplayed();
         confirmation.clickBackHomeButton();

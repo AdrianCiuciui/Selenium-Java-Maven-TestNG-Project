@@ -10,15 +10,18 @@ import org.testng.annotations.BeforeSuite;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
-import java.util.Random;
 
 public class BaseTest{
 
     public WebDriver driver;
     private static final Properties PROPERTIES = new Properties();
     public static List<Product> productsOrdered = new ArrayList<>();
+    protected static Integer[] randomNumbers;
+    protected static int randomNumbersIndex = 0;
 
     @BeforeSuite
     public void readPropertiesFile() {
@@ -39,7 +42,10 @@ public class BaseTest{
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
         BasePageObject.setDriver(driver);
         waitImplicit(1);
+        setUpRandomNumbersArray();
     }
+
+
 
     public static String getUsernameRegular(){
 
@@ -112,18 +118,34 @@ public class BaseTest{
         return Integer.parseInt(count);
     }
 
+    /**
+     * @return a random unique value
+     */
     public static int randomNumber0ToTotalAvailableProducts(){
-//todo  need to add validation that it will not return duplicate number
-        Random random = new Random();
-        return random.nextInt(getTotalNumberOfProducts());
+
+        if (randomNumbersIndex >= getTotalNumberOfProducts()) {
+            System.out.println("All random numbers have been used");
+            return -1;
+        }
+        else {
+            return randomNumbers[randomNumbersIndex++];
+        }
     }
 
+    /**
+     * This method prepares a unique and random array at each test run.
+     * It will return -1 after the max number of entries.
+     */
+    private void setUpRandomNumbersArray(){
 
-    @AfterMethod
-    public void tearDown() {
-
-        waitImplicit(2);
-        driver.quit();
+        randomNumbers = new Integer[getTotalNumberOfProducts()];
+        for (int i = 0; i < getTotalNumberOfProducts(); i++) {
+            randomNumbers[i] = i;
+        }
+        List<Integer> intList = Arrays.asList(randomNumbers);
+        Collections.shuffle(intList);
+        intList.toArray(randomNumbers);
+        System.out.println("The current array is: " + Arrays.toString(randomNumbers));
     }
 
     public static void waitImplicit(long seconds){
@@ -134,4 +156,13 @@ public class BaseTest{
             Thread.currentThread().interrupt();
         }
     }
+
+    @AfterMethod
+    public void tearDown() {
+
+        randomNumbersIndex = 0;
+        waitImplicit(2);
+        driver.quit();
+    }
+
 }
