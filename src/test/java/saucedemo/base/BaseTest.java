@@ -14,12 +14,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.IntStream;
 
 public class BaseTest{
 
     public WebDriver driver;
     private static final Properties PROPERTIES = new Properties();
-    public static List<Product> productsOrdered = new ArrayList<>();
+    public static List<Item> productsOrdered = new ArrayList<>();
     protected static Integer[] randomNumbers;
     protected static int randomNumbersIndex = 0;
 
@@ -44,7 +45,6 @@ public class BaseTest{
         waitImplicit(1);
         setUpRandomNumbersArray();
     }
-
 
 
     public static String getUsernameRegular(){
@@ -112,7 +112,7 @@ public class BaseTest{
         return (PROPERTIES.getProperty("url.base") + PROPERTIES.getProperty("/checkout-complete.html"));
     }
 
-    public static int getTotalNumberOfProducts(){
+    public static int getTotalNumberOfDisplayedProducts(){
 
         String count = PROPERTIES.getProperty("products.count");
         return Integer.parseInt(count);
@@ -123,7 +123,7 @@ public class BaseTest{
      */
     public static int randomNumber0ToTotalAvailableProducts(){
 
-        if (randomNumbersIndex >= getTotalNumberOfProducts()) {
+        if (randomNumbersIndex >= getTotalNumberOfDisplayedProducts()) {
             System.out.println("All random numbers have been used");
             return -1;
         }
@@ -138,14 +138,12 @@ public class BaseTest{
      */
     private void setUpRandomNumbersArray(){
 
-        randomNumbers = new Integer[getTotalNumberOfProducts()];
-        for (int i = 0; i < getTotalNumberOfProducts(); i++) {
-            randomNumbers[i] = i;
-        }
+        randomNumbers = new Integer[getTotalNumberOfDisplayedProducts()];
+        IntStream.range(0, getTotalNumberOfDisplayedProducts()).forEach(i -> randomNumbers[i] = i);
         List<Integer> intList = Arrays.asList(randomNumbers);
         Collections.shuffle(intList);
         intList.toArray(randomNumbers);
-        System.out.println("The current array is: " + Arrays.toString(randomNumbers));
+        System.out.println("[DEBUG] The current random array is: " + Arrays.toString(randomNumbers));
     }
 
     public static void waitImplicit(long seconds){
@@ -161,7 +159,7 @@ public class BaseTest{
     public void tearDown() {
 
         randomNumbersIndex = 0;
-        waitImplicit(2);
+        waitImplicit(1);
         driver.quit();
     }
 

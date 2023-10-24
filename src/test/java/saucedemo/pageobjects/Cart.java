@@ -22,22 +22,36 @@ public class Cart extends BasePageObject {
         driver.findElement(buttonContinueShopping).click();
     }
 
+    /**
+     * @param index Start from 0, but this particular page starts from 1
+     */
     public void clickProductRemoveButton(int index){
-        driver.findElement(By.xpath(String.format(buttonProductRemove, index))).click();
+        driver.findElement(By.xpath(String.format(buttonProductRemove, index + 1))).click();
     }
 
+    /**
+     * @param index Start from 0, but this particular page starts from 1
+     */
     public void clickProductTitle(int index){
-        driver.findElement(By.xpath(String.format(buttonProductTitle, index))).click();
+        driver.findElement(By.xpath(String.format(buttonProductTitle, index + 1))).click();
     }
 
+    /**
+     * @param index Start from 0, but this particular page starts from 1
+     * @return The description as String
+     */
     public String getProductDescription(int index){
 
-        return driver.findElement(By.xpath(String.format(labelDescription, index))).getText();
+        return driver.findElement(By.xpath(String.format(labelDescription, index + 1))).getText();
     }
 
+    /**
+     * @param index Start from 0, but this particular page starts from 1
+     * @return The price, without the leading currency, as string
+     */
     public String getProductPrice(int index){
 
-        return driver.findElement(By.xpath(String.format(labelPrice, index))).getText().substring(1);
+        return driver.findElement(By.xpath(String.format(labelPrice, index + 1))).getText().substring(1);
     }
 
 }

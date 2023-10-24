@@ -5,15 +5,17 @@ import saucedemo.base.BasePageObject;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.openqa.selenium.By.className;
+import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
 public class Header extends BasePageObject {
 
     private final By pageTitle = xpath("//*[@class='title']");
-    private final By buttonMenu = xpath("//*[@id='react-burger-menu-btn']");
-    private final By buttonCart = xpath("//*[@id='shopping_cart_container']");
-    private final By buttonFilter = xpath("//*[@class='select_container']");
-    private final By cartBadge = xpath("//*[@class='shopping_cart_badge']");
+    private final By buttonMenu = id("react-burger-menu-btn");
+    private final By buttonCart = id("shopping_cart_container");
+    private final By buttonFilter = className("select_container");
+    private final By cartBadge = className("shopping_cart_badge");
     private final By filterOptionsAZ = xpath("//option[@value='az']");
     private final By filterOptionsZA = xpath("//option[@value='za']");
     private final By filterOptionsLowHigh = xpath("//option[@value='lohi']");
@@ -59,9 +61,10 @@ public class Header extends BasePageObject {
         driver.findElement(filterOptionsHighLow).click();
     }
 
-    public String getCartBadgeValue(){
+    public int getCartBadgeValue(){
 
-        return driver.findElement(cartBadge).getText();
+        String returnedValue = driver.findElement(cartBadge).getText();
+        return Integer.parseInt(returnedValue);
     }
 
 }
