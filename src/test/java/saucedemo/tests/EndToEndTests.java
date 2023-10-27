@@ -99,10 +99,8 @@ public class EndToEndTests extends BaseTest{
         productSteps.checkPageElementsAreDisplayedExceptCartButtons();
         assertThat(product.isAddToCartButtonDisplayed(), is(true));
         productSteps.checkTheProductPageContents(productsOrdered.get(indexForFirst));
-
         assertThat(header.isBadgeDisplayed(), is(false));
         product.clickAddToCart();
-
         assertThat(product.isRemoveFromCartButtonDisplayed(), is(true));
         assertThat(header.isBadgeDisplayed(), is(true));
         assertThat(header.getCartBadgeValue(), is(++numberOfProductsInCart));
