@@ -23,42 +23,42 @@ public class Header extends BasePageObject {
 
     public void checkTitleIsDisplayed(){
 
-        assertThat(driver.findElement(pageTitle).isDisplayed(), is(true)) ;
+        assertThat(isElementDisplayed(pageTitle), is(true)) ;
     }
 
     public void clickMenuButton(){
 
-        driver.findElement(buttonMenu).click();
+        clickOnButton(buttonMenu);
     }
 
     public void clickCartButton(){
 
-        driver.findElement(buttonCart).click();
+        clickOnButton(buttonCart);
     }
 
     public void clickFilterButton(){
 
-        driver.findElement(buttonFilter).click();
+        clickOnButton(buttonFilter);
     }
 
     public void clickFilterOptionAZ(){
 
-        driver.findElement(filterOptionsAZ).click();
+        clickOnButton(filterOptionsAZ);
     }
 
     public void clickFilterOptionZA(){
 
-        driver.findElement(filterOptionsZA).click();
+        clickOnButton(filterOptionsZA);
     }
 
     public void clickFilterOptionLowToHigh(){
 
-        driver.findElement(filterOptionsLowHigh).click();
+        clickOnButton(filterOptionsLowHigh);
     }
 
     public void clickFilterOptionHighToLow(){
 
-        driver.findElement(filterOptionsHighLow).click();
+        clickOnButton(filterOptionsHighLow);
     }
 
     public int getCartBadgeValue(){
@@ -69,7 +69,7 @@ public class Header extends BasePageObject {
 
     public boolean isBadgeDisplayed(){
 
-        return !isElementNotDisplayed(cartBadge);
+        return isElementDisplayed(cartBadge);
     }
 
 }

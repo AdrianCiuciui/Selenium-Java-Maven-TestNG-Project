@@ -19,41 +19,41 @@ public class Products extends BasePageObject {//todo    \\..//
     public void checkPageIsDisplayed(){
 
         int index = 0;
-        assertThat(driver.findElement(By.xpath(String.format(buttonProductImage, index++))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(buttonProductTitle, index++))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(buttonProductAddToCart, index++))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(labelProductDescription, index++))).isDisplayed(), is(true));
-        assertThat(driver.findElement(By.xpath(String.format(labelProductPrice, index))).isDisplayed(), is(true));
+        assertThat(isElementDisplayed(By.xpath(String.format(buttonProductImage, index++))), is(true));
+        assertThat(isElementDisplayed(By.xpath(String.format(buttonProductTitle, index++))), is(true));
+        assertThat(isElementDisplayed(By.xpath(String.format(buttonProductAddToCart, index++))), is(true));
+        assertThat(isElementDisplayed(By.xpath(String.format(labelProductDescription, index++))), is(true));
+        assertThat(isElementDisplayed(By.xpath(String.format(labelProductPrice, index))), is(true));
     }
 
     public void clickProductImage(int index){
-        driver.findElement(By.xpath(String.format(buttonProductImage, index))).click();
+        clickOnButton(By.xpath(String.format(buttonProductImage, index)));
     }
 
     public void clickProductTitle(int index){
-        driver.findElement(By.xpath(String.format(buttonProductTitle, index))).click();
+        clickOnButton(By.xpath(String.format(buttonProductTitle, index)));
     }
 
     public void clickAddToCart(int index){
-        driver.findElement(By.xpath(String.format(buttonProductAddToCart, index))).click();
+        clickOnButton(By.xpath(String.format(buttonProductAddToCart, index)));
     }
 
     public void clickRemoveFromCart(int index){
-        driver.findElement(By.xpath(String.format(buttonProductRemoveFromCart, index))).click();
+        clickOnButton(By.xpath(String.format(buttonProductRemoveFromCart, index)));
     }
 
     public String getProductDescription(int index){
-        return driver.findElement(By.xpath(String.format(labelProductDescription, index))).getText();
+        return getTextFromField(By.xpath(String.format(labelProductDescription, index)));
     }
 
     public String getProductPrice(int index){
-        String price = driver.findElement(By.xpath(String.format(labelProductPrice, index))).getText();
+        String price = getTextFromField(By.xpath(String.format(labelProductPrice, index)));
         return price.substring(1);
     }
 
     public String getProductTitle(int index) {
 
-        return driver.findElement(By.xpath(String.format(buttonProductTitle, index))).getText();
+        return getTextFromField(By.xpath(String.format(buttonProductTitle, index)));
     }
 
     public boolean isProductInCart(int index){

@@ -15,11 +15,11 @@ public class Cart extends BasePageObject {
     private final String labelPrice = "(//*[@class='inventory_item_price'])[%d]";
 
     public void clickCheckoutButton(){
-        driver.findElement(buttonCheckout).click();
+        clickOnButton(buttonCheckout);
     }
 
     public void clickContinueShoppingButton(){
-        driver.findElement(buttonContinueShopping).click();
+        clickOnButton(buttonContinueShopping);
     }
 
     /**

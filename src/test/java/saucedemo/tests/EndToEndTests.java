@@ -14,7 +14,6 @@ import saucedemo.pageobjects.Products;
 import saucedemo.steps.CartSteps;
 import saucedemo.steps.CheckoutOneSteps;
 import saucedemo.steps.CheckoutTwoSteps;
-import saucedemo.steps.HeaderSteps;
 import saucedemo.steps.LoginSteps;
 import saucedemo.steps.OrderConfirmationSteps;
 import saucedemo.steps.ProductSteps;
@@ -38,7 +37,6 @@ public class EndToEndTests extends BaseTest{
     private CheckoutStepTwo checkoutStepTwo;
     private OrderConfirmationSteps confirmationSteps;
     private OrderConfirmation confirmation;
-    private HeaderSteps headerSteps;
     private Header header;
     private Menu menu;
 
@@ -60,7 +58,6 @@ public class EndToEndTests extends BaseTest{
         checkoutStepTwo = new CheckoutStepTwo();
         confirmationSteps = new OrderConfirmationSteps();
         confirmation = new OrderConfirmation();
-        headerSteps = new HeaderSteps();
         header = new Header();
         menu = new Menu();
 
@@ -82,7 +79,7 @@ public class EndToEndTests extends BaseTest{
         checkoutStepTwo.clickFinishButton();
         confirmationSteps.checkPageIsDisplayed();
         confirmation.clickBackHomeButton();
-        headerSteps.checkPageIsDisplayed();
+        header.checkTitleIsDisplayed();
         productsSteps.checkPageIsDisplayed();
         header.clickMenuButton();
         menu.clickOnLogoutOption();
@@ -102,8 +99,10 @@ public class EndToEndTests extends BaseTest{
         productSteps.checkPageElementsAreDisplayedExceptCartButtons();
         assertThat(product.isAddToCartButtonDisplayed(), is(true));
         productSteps.checkTheProductPageContents(productsOrdered.get(indexForFirst));
+
         assertThat(header.isBadgeDisplayed(), is(false));
         product.clickAddToCart();
+
         assertThat(product.isRemoveFromCartButtonDisplayed(), is(true));
         assertThat(header.isBadgeDisplayed(), is(true));
         assertThat(header.getCartBadgeValue(), is(++numberOfProductsInCart));
@@ -122,7 +121,7 @@ public class EndToEndTests extends BaseTest{
         confirmationSteps.checkPageIsDisplayed();
         assertThat(header.isBadgeDisplayed(), is(false));
         confirmation.clickBackHomeButton();
-        headerSteps.checkPageIsDisplayed();
+        header.checkTitleIsDisplayed();
         productsSteps.checkPageIsDisplayed();
     }
 

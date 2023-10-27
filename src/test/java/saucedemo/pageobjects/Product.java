@@ -16,62 +16,62 @@ public class Product extends BasePageObject {
     private final By productImage = xpath("//img[@class='inventory_details_img']");
 
     public void clickBackToProducts(){
-        driver.findElement(buttonBackToProducts).click();
+        clickOnButton(buttonBackToProducts);
     }
 
     public void clickAddToCart(){
-        driver.findElement(buttonAddToCart).click();
+        clickOnButton(buttonAddToCart);
     }
 
     public void clickRemoveFromCart(){
-        driver.findElement(buttonRemoveFromCart).click();
+        clickOnButton(buttonRemoveFromCart);
     }
 
     public String getProductName(){
-        return driver.findElement(labelProductName).getText();
+        return getTextFromField(labelProductName);
     }
 
     public String getProductDescription(){
-        return driver.findElement(labelProductDescription).getText();
+        return getTextFromField(labelProductDescription);
     }
 
     public String getProductPrice(){
-        return driver.findElement(labelProductPrice).getText();
+        return getTextFromField(labelProductPrice);
     }
 
     public boolean isProductTitleDisplayed(){
 
-        return driver.findElement(labelProductName).isDisplayed();
+        return isElementDisplayed(labelProductName);
     }
 
     public boolean isDescriptionDisplayed(){
 
-        return driver.findElement(labelProductDescription).isDisplayed();
+        return isElementDisplayed(labelProductDescription);
     }
 
     public boolean isPriceDisplayed(){
 
-        return driver.findElement(labelProductPrice).isDisplayed();
+        return isElementDisplayed(labelProductPrice);
     }
 
     public boolean isImageDisplayed(){
 
-        return driver.findElement(productImage).isDisplayed();
+        return isElementDisplayed(productImage);
     }
 
     public boolean isReturnButtonDisplayed(){
 
-        return driver.findElement(buttonBackToProducts).isDisplayed();
+        return isElementDisplayed(buttonBackToProducts);
     }
 
     public boolean isAddToCartButtonDisplayed(){
 
-        return driver.findElement(buttonAddToCart).isDisplayed();
+        return isElementDisplayed(buttonAddToCart);
     }
 
     public boolean isRemoveFromCartButtonDisplayed(){
 
-        return driver.findElement(buttonRemoveFromCart).isDisplayed();
+        return isElementDisplayed(buttonRemoveFromCart);
     }
 
 }

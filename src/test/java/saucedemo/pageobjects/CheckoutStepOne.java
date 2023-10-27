@@ -53,7 +53,7 @@ public class CheckoutStepOne extends BasePageObject {
 
     public boolean isErrorMessageDisplayed(){
 
-        return driver.findElement(errorMessage).isDisplayed();
+        return isElementDisplayed(errorMessage);
     }
 
     public boolean isAllErrorIconsDisplayedInInputFields(){

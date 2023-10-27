@@ -18,27 +18,27 @@ public class CheckoutStepTwo extends Cart {
 
     public void clickCancelButton(){
 
-        driver.findElement(buttonCancel).click();
+        clickOnButton(buttonCancel);
     }
 
     public void clickFinishButton(){
 
-        driver.findElement(buttonFinish).click();
+        clickOnButton(buttonFinish);
     }
 
     public String getProductsTotalPrice(){
 
-        return (driver.findElement(labelPriceItemsTotal).getText().substring(13));
+        return (getTextFromField(labelPriceItemsTotal).substring(13));
     }
 
     public String getProductTaxPrice(){
 
-        return (driver.findElement(labelPriceTax).getText().substring(6));
+        return (getTextFromField(labelPriceTax).substring(6));
     }
 
     public String getProductFinalTotalPrice(){
 
-        return (driver.findElement(labelPriceTotal).getText().substring(8));
+        return (getTextFromField(labelPriceTotal).substring(8));
     }
 
     public int getNumberOfProductsInCheckout(){

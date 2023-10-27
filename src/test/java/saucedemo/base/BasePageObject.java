@@ -39,14 +39,25 @@ public class BasePageObject {
         }
     }
 
-    public boolean isElementNotDisplayed(By locator){
+    public boolean isElementDisplayed(By locator){
 
-        try{
-            driver.findElement(locator).isDisplayed();
-            return false;
-        } catch (Exception e) {
-            return true;
-        }
+            return driver.findElements(locator).size() != 0;
+    }
+
+    public void inputValues(By element, String input){
+
+        driver.findElement(element).clear();
+        driver.findElement(element).sendKeys(input);
+    }
+
+    public void clickOnButton(By element){
+
+        driver.findElement(element).click();
+    }
+
+    public String getTextFromField(By element){
+
+        return driver.findElement(element).getText();
     }
 
 }

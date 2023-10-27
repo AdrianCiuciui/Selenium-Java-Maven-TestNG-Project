@@ -19,34 +19,32 @@ public class Login extends BasePageObject {
     private final By errorTextMessageIsHidden = xpath("//div[@class='error-message-container']");
 
     public void inputUsername(String username) {
-        driver.findElement(inputFieldUsername).clear();
-        driver.findElement(inputFieldUsername).sendKeys(username);
+        inputValues(inputFieldUsername, username);
     }
 
     public void inputPassword(String password){
-        driver.findElement(inputFieldPassword).clear();
-        driver.findElement(inputFieldPassword).sendKeys(password);
+        inputValues(inputFieldPassword, password);
     }
 
     public void clickLoginButton(){
-        driver.findElement(buttonLogin).click();
+        clickOnButton(buttonLogin);
     }
 
     public void checkAllPageElementsAreDisplayed(){
 
-        assertThat("Logo not displayed", driver.findElement(logo).isDisplayed(), is(true));
-        assertThat("Login credentials not displayed", driver.findElement(loginCredentials).isDisplayed(), is(true));
-        assertThat("Error text message is not hidden", driver.findElement(errorTextMessageIsHidden).isDisplayed(), is(true));
+        assertThat("Logo not displayed", isElementDisplayed(logo), is(true));
+        assertThat("Login credentials not displayed", isElementDisplayed(loginCredentials), is(true));
+        assertThat("Error text message is not hidden", isElementDisplayed(errorTextMessageIsHidden), is(true));
     }
 
     public void checkErrorMessageAndRedInputFieldsAreDisplayed(){
 
-        assertThat(driver.findElement(errorTextMessage).isDisplayed(), is(true));
-        assertThat(driver.findElement(errorIconInInputField).isDisplayed(), is(true));
+        assertThat(isElementDisplayed(errorTextMessage), is(true));
+        assertThat(isElementDisplayed(errorIconInInputField), is(true));
     }
 
     public void clickToCloseErrorMessage(){
-        driver.findElement(getErrorAtCredentialsButton).click();
+        clickOnButton(getErrorAtCredentialsButton);
     }
 
 }
