@@ -102,11 +102,10 @@ public class EndToEndTests extends BaseTest{
         productSteps.checkPageElementsAreDisplayedExceptCartButtons();
         assertThat(product.isAddToCartButtonDisplayed(), is(true));
         productSteps.checkTheProductPageContents(productsOrdered.get(indexForFirst));
-
-        //todo  Need to implement "isNotDisplayed" for no products in cart case
-
+        assertThat(header.isBadgeDisplayed(), is(false));
         product.clickAddToCart();
         assertThat(product.isRemoveFromCartButtonDisplayed(), is(true));
+        assertThat(header.isBadgeDisplayed(), is(true));
         assertThat(header.getCartBadgeValue(), is(++numberOfProductsInCart));
         product.clickBackToProducts();
         products.clickAddToCart(indexForSecond);
@@ -121,6 +120,7 @@ public class EndToEndTests extends BaseTest{
         checkoutTwoSteps.checkTotalSumValueOfProducts();
         checkoutStepTwo.clickFinishButton();
         confirmationSteps.checkPageIsDisplayed();
+        assertThat(header.isBadgeDisplayed(), is(false));
         confirmation.clickBackHomeButton();
         headerSteps.checkPageIsDisplayed();
         productsSteps.checkPageIsDisplayed();

@@ -67,4 +67,9 @@ public class Header extends BasePageObject {
         return Integer.parseInt(returnedValue);
     }
 
+    public boolean isBadgeDisplayed(){
+
+        return !isElementNotDisplayed(cartBadge);
+    }
+
 }

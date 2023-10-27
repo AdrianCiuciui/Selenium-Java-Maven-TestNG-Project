@@ -1,6 +1,7 @@
 package saucedemo.base;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,6 +36,16 @@ public class BasePageObject {
             driver.wait(seconds * 1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public boolean isElementNotDisplayed(By locator){
+
+        try{
+            driver.findElement(locator).isDisplayed();
+            return false;
+        } catch (Exception e) {
+            return true;
         }
     }
 
