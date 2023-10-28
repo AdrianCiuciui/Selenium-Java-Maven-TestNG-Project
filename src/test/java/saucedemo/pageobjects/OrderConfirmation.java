@@ -15,19 +15,19 @@ public class OrderConfirmation extends BasePageObject {
     private final By buttonBackHome = xpath("//button[@id='back-to-products']");
 
     public void clickBackHomeButton(){
-        driver.findElement(buttonBackHome).click();
+        clickOnButton(buttonBackHome);
     }
 
     public void checkSuccessImageIsDisplayed(){
-        assertThat(driver.findElement(labelSuccessIcon).isDisplayed(), is(true) );
+        assertThat(isElementDisplayed(labelSuccessIcon), is(true) );
     }
 
     public void checkMessageHeaderIsDisplayed(){
-        assertThat(driver.findElement(labelSuccessMessageHeader).isDisplayed(), is(true));
+        assertThat(isElementDisplayed(labelSuccessMessageHeader), is(true));
     }
 
     public void checkMessageDescriptionIsDisplayed(){
-        assertThat(driver.findElement(labelSuccessMessageDescription).isDisplayed(), is(true));
+        assertThat(isElementDisplayed(labelSuccessMessageDescription), is(true));
     }
 
 }

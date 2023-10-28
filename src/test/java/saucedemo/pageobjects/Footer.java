@@ -17,19 +17,19 @@ public class Footer extends BasePageObject {
 
     public void checkFooterIsDisplayed(){
 
-        assertThat(driver.findElement(footerArea).isDisplayed(), is(true));
+        assertThat(isElementDisplayed(footerArea), is(true));
     }
 
     public void checkSocialsAreDisplayed(){
 
-        assertThat(driver.findElement(socialTwitter).isDisplayed(), is(true));
-        assertThat(driver.findElement(socialFacebook).isDisplayed(), is(true));
-        assertThat(driver.findElement(socialLinkedin).isDisplayed(), is(true));
+        assertThat(isElementDisplayed(socialTwitter), is(true));
+        assertThat(isElementDisplayed(socialFacebook), is(true));
+        assertThat(isElementDisplayed(socialLinkedin), is(true));
     }
 
     public String getCopyrightInformation(){
 
-        return driver.findElement(footerCopyright).getText();
+        return getTextFromField(footerCopyright);
     }
 
 }

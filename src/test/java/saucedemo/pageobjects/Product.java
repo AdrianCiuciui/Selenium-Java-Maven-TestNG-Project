@@ -9,33 +9,69 @@ public class Product extends BasePageObject {
 
     private final By buttonAddToCart = xpath("//*[@class='inventory_details_desc_container']//*[contains(@class,'btn_primary')]");
     private final By buttonRemoveFromCart = xpath("//*[@class='inventory_details_desc_container']//*[contains(@class,'btn_secondary')]");
-    private final By buttonBackToProducts = xpath("//button[@id='back-to-products']");
+    private final By buttonBackToProducts = By.id("back-to-products");
     private final By labelProductName = xpath("//div[@class='inventory_details_name large_size']");
-    private final By labelProductDescription = xpath("//div[@class='inventory_details_name large_size']");
+    private final By labelProductDescription = xpath("//div[@class='inventory_details_desc large_size']");
     private final By labelProductPrice = xpath("//div[@class='inventory_details_price']");
+    private final By productImage = xpath("//img[@class='inventory_details_img']");
 
     public void clickBackToProducts(){
-        driver.findElement(buttonBackToProducts).click();
+        clickOnButton(buttonBackToProducts);
     }
 
     public void clickAddToCart(){
-        driver.findElement(buttonAddToCart).click();
+        clickOnButton(buttonAddToCart);
     }
 
     public void clickRemoveFromCart(){
-        driver.findElement(buttonRemoveFromCart).click();
+        clickOnButton(buttonRemoveFromCart);
     }
 
     public String getProductName(){
-        return driver.findElement(labelProductName).getText();
+        return getTextFromField(labelProductName);
     }
 
     public String getProductDescription(){
-        return driver.findElement(labelProductDescription).getText();
+        return getTextFromField(labelProductDescription);
     }
 
     public String getProductPrice(){
-        return driver.findElement(labelProductPrice).getText();
+        return getTextFromField(labelProductPrice);
+    }
+
+    public boolean isProductTitleDisplayed(){
+
+        return isElementDisplayed(labelProductName);
+    }
+
+    public boolean isDescriptionDisplayed(){
+
+        return isElementDisplayed(labelProductDescription);
+    }
+
+    public boolean isPriceDisplayed(){
+
+        return isElementDisplayed(labelProductPrice);
+    }
+
+    public boolean isImageDisplayed(){
+
+        return isElementDisplayed(productImage);
+    }
+
+    public boolean isReturnButtonDisplayed(){
+
+        return isElementDisplayed(buttonBackToProducts);
+    }
+
+    public boolean isAddToCartButtonDisplayed(){
+
+        return isElementDisplayed(buttonAddToCart);
+    }
+
+    public boolean isRemoveFromCartButtonDisplayed(){
+
+        return isElementDisplayed(buttonRemoveFromCart);
     }
 
 }

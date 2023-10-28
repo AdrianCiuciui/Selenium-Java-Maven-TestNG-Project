@@ -14,16 +14,20 @@ import saucedemo.pageobjects.Products;
 import saucedemo.steps.CartSteps;
 import saucedemo.steps.CheckoutOneSteps;
 import saucedemo.steps.CheckoutTwoSteps;
-import saucedemo.steps.HeaderSteps;
 import saucedemo.steps.LoginSteps;
 import saucedemo.steps.OrderConfirmationSteps;
+import saucedemo.steps.ProductSteps;
 import saucedemo.steps.ProductsSteps;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class EndToEndTests extends BaseTest{
 
     private Login login;
     private LoginSteps loginSteps;
     private saucedemo.pageobjects.Product product;
+    private ProductSteps productSteps;
     private Products products;
     private ProductsSteps productsSteps;
     private CartSteps cartSteps;
@@ -33,7 +37,6 @@ public class EndToEndTests extends BaseTest{
     private CheckoutStepTwo checkoutStepTwo;
     private OrderConfirmationSteps confirmationSteps;
     private OrderConfirmation confirmation;
-    private HeaderSteps headerSteps;
     private Header header;
     private Menu menu;
 
@@ -45,6 +48,7 @@ public class EndToEndTests extends BaseTest{
         login = new Login();
         loginSteps = new LoginSteps();
         product = new Product();
+        productSteps = new ProductSteps();
         products = new Products();
         productsSteps = new ProductsSteps();
         cartSteps = new CartSteps();
@@ -54,7 +58,6 @@ public class EndToEndTests extends BaseTest{
         checkoutStepTwo = new CheckoutStepTwo();
         confirmationSteps = new OrderConfirmationSteps();
         confirmation = new OrderConfirmation();
-        headerSteps = new HeaderSteps();
         header = new Header();
         menu = new Menu();
 
@@ -66,7 +69,7 @@ public class EndToEndTests extends BaseTest{
      * There is no need to clear the cart from existing products because
      * the user is unique to the browser instance. (each test has it`s own browser instance)
      */
-    @Test()
+    @Test(priority = 1)
     public void endToEndPlaceOrderWithOneProduct(){
 
         productsSteps.addProductToCartAndGoToCart(randomNumber0ToTotalAvailableProducts());
@@ -76,52 +79,48 @@ public class EndToEndTests extends BaseTest{
         checkoutStepTwo.clickFinishButton();
         confirmationSteps.checkPageIsDisplayed();
         confirmation.clickBackHomeButton();
-        headerSteps.checkPageIsDisplayed();
+        header.checkTitleIsDisplayed();
         productsSteps.checkPageIsDisplayed();
         header.clickMenuButton();
         menu.clickOnLogoutOption();
         login.checkAllPageElementsAreDisplayed();
     }
 
-    @Test
+    @Test(priority = 2)
     public void endToEndPlaceOrderWithMultipleProductsCheckTotal(){
 
-//        int indexForFirst = randomNumber0ToTotalAvailableProducts();
-//        int indexForSecond = randomNumber0ToTotalAvailableProducts();
-//        int indexForThird = randomNumber0ToTotalAvailableProducts();
-        int indexForFirst = 1;
-        int indexForSecond = 3;
-        int indexForThird = 5;
-        System.out.println("indexes: " + indexForFirst + ", " + indexForSecond + ", " + indexForThird);
+        int indexForFirst = randomNumber0ToTotalAvailableProducts();
+        int indexForSecond = randomNumber0ToTotalAvailableProducts();
+        int indexForThird = randomNumber0ToTotalAvailableProducts();
+        int numberOfProductsInCart = 0;
 
         productsSteps.setUpTheProducts();
         products.clickProductImage(indexForFirst);
-
-        //todo  add validations for the product
+        productSteps.checkPageElementsAreDisplayedExceptCartButtons();
+        assertThat(product.isAddToCartButtonDisplayed(), is(true));
+        productSteps.checkTheProductPageContents(productsOrdered.get(indexForFirst));
+        assertThat(header.isBadgeDisplayed(), is(false));
         product.clickAddToCart();
-        //todo  add validations for the remove from cart button
-        //todo  add validation for the cart icon value
-
+        assertThat(product.isRemoveFromCartButtonDisplayed(), is(true));
+        assertThat(header.isBadgeDisplayed(), is(true));
+        assertThat(header.getCartBadgeValue(), is(++numberOfProductsInCart));
         product.clickBackToProducts();
         products.clickAddToCart(indexForSecond);
-        //todo  add validations for the cart icon value
+        assertThat(header.getCartBadgeValue(), is(++numberOfProductsInCart));
         products.clickAddToCart(indexForThird);
+        assertThat(header.getCartBadgeValue(), is(++numberOfProductsInCart));
         header.clickCartButton();
-
-        //todo  need to refactor this method, the locator is
-        cart.clickProductRemoveButton(1);
+        cart.clickProductRemoveButton(0);
         cart.clickCheckoutButton();
         checkoutOneSteps.fillInInputFieldsAndPressNext();
-
-        //todo  need to cover the case where there are multiple products in the cart
         checkoutTwoSteps.checkTotalPriceValue();
-
+        checkoutTwoSteps.checkTotalSumValueOfProducts();
         checkoutStepTwo.clickFinishButton();
         confirmationSteps.checkPageIsDisplayed();
+        assertThat(header.isBadgeDisplayed(), is(false));
         confirmation.clickBackHomeButton();
-        headerSteps.checkPageIsDisplayed();
+        header.checkTitleIsDisplayed();
         productsSteps.checkPageIsDisplayed();
-
     }
 
 }

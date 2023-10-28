@@ -1,9 +1,9 @@
 package saucedemo.base;
 
-public class Product {
+public class Item {
 
     private int id;
-    private String title;
+    private String productName;
     private String description;
     private String price;
     private boolean inCart = false;
@@ -17,12 +17,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getDescription() {

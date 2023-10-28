@@ -19,15 +19,15 @@ public class Menu extends BasePageObject {
 
     public void checkMenuIsDisplayed(){
 
-        assertThat(driver.findElement(menuBar).isDisplayed(), is(true));
+        assertThat(isElementDisplayed(menuBar), is(true));
     }
 
     public void clickOnProductsOption(){
-        driver.findElement(buttonProducts).click();
+        clickOnButton(buttonProducts);
     }
 
     public void clickOnAboutOption(){
-        driver.findElement(buttonAbout).click();
+        clickOnButton(buttonAbout);
     }
 
     public void clickOnLogoutOption(){
@@ -38,11 +38,11 @@ public class Menu extends BasePageObject {
     }
 
     public void clickOnResetAppState(){
-        driver.findElement(buttonResetAppState).click();
+        clickOnButton(buttonResetAppState);
     }
 
     public void clickOnCloseMenu(){
-        driver.findElement(buttonCloseMenu).click();
+        clickOnButton(buttonCloseMenu);
     }
 
 }

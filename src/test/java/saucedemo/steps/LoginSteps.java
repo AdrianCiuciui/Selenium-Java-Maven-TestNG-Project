@@ -57,4 +57,5 @@ public class LoginSteps extends BasePageObject{
         login.clickToCloseErrorMessage();
         login.checkAllPageElementsAreDisplayed();
     }
+
 }
