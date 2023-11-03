@@ -61,7 +61,4 @@ public class Products extends BasePageObject {//todo    \\..//
         return !driver.findElement(By.xpath(String.format(buttonProductAddToCart, index))).isDisplayed();
     }
 
-
-
-
 }
