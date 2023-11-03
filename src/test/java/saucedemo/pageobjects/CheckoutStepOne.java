@@ -6,16 +6,17 @@ import saucedemo.base.BasePageObject;
 
 import java.util.List;
 
+import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
 public class CheckoutStepOne extends BasePageObject {
 
-    private final By buttonCancel = xpath("//button[@id='cancel']");
-    private final By buttonContinue = xpath("//input[@id='continue']");
+    private final By buttonCancel = id("cancel");
+    private final By buttonContinue = id("continue");
     private final By buttonErrorCloseMessage = xpath("//button[@class='error-button']");
-    private final By inputFirstName = xpath("//input[@id='first-name']");
-    private final By inputLastName = xpath("//input[@id='last-name']");
-    private final By inputPostalCode = xpath("//input[@id='postal-code']");
+    private final By inputFirstName = id("first-name");
+    private final By inputLastName = id("last-name");
+    private final By inputPostalCode = id("postal-code");
     private final By errorMessage = xpath("//div[@class='error-message-container error']");
     private final By errorIconInInputField_NotUnique = xpath("//div[@class='form_group']//*[@data-prefix='fas']");
     private final By errorInputFields_NotUnique = xpath("//input[@class='input_error form_input error']");

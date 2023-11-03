@@ -6,20 +6,22 @@ import saucedemo.base.BasePageObject;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
 public class Menu extends BasePageObject {
 
-    private final By buttonProducts = xpath("//a[@id='inventory_sidebar_link']");
-    private final By buttonAbout = xpath("//a[@id='about_sidebar_link']");
-    private final By buttonLogout = xpath("//a[@id='logout_sidebar_link']");
-    private final By buttonResetAppState = xpath("//a[@id='reset_sidebar_link']");
-    private final By buttonCloseMenu = xpath("//button[@id='react-burger-cross-btn']");
+    private final By buttonProducts = id("inventory_sidebar_link");
+    private final By buttonAbout = id("about_sidebar_link");
+    private final By buttonLogout = id("logout_sidebar_link");
+    private final By buttonResetAppState = id("reset_sidebar_link");
+    private final By buttonCloseMenu = id("react-burger-cross-btn");
     private final By menuBar = xpath("//div[@class='bm-menu']");
 
     public void checkMenuIsDisplayed(){
 
-        assertThat(isElementDisplayed(menuBar), is(true));
+        assertThat("The menu bad is not displayed",
+                isElementDisplayed(menuBar), is(true));
     }
 
     public void clickOnProductsOption(){
