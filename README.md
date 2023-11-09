@@ -1,7 +1,7 @@
 # SwagLabsAutomation
 Automation project for https://www.saucedemo.com
 
-There are some login tests and 2 e2e tests. They can be found in the Test classes.
+There are some login tests and two e2e tests. They can be found in the Test classes.
 What they cover:
 - the core business flow: placing a product in the cart and performing checkout with it
 - products are added to the cart from the Products and Product details page
