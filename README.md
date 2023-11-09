@@ -1,4 +1,4 @@
-# SwagLabsAutomation
+# Selenium-Java
 Automation project for https://www.saucedemo.com
 
 There are some login tests and two e2e tests. They can be found in the Test classes.
