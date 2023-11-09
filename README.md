@@ -1,6 +1,9 @@
 # Selenium-Java
 Automation project for https://www.saucedemo.com
 
+This project is closely related to https://github.com/AdrianCiuciui/Playwright-Typescript. 
+They both handle the same demo website and their tests cover similar flows.
+
 There are some login tests and two e2e tests. They can be found in the Test classes.
 What they cover:
 - the core business flow: placing a product in the cart and performing checkout with it
