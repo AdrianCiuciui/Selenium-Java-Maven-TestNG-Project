@@ -15,9 +15,9 @@ jobs:
   tralala_project:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: hello_Step
-      run: echo "hellp step"
+    steps:
+      - name: hello_Step
+        run: echo "hellp step"
 
     
 #    permissions:
