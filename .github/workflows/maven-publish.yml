@@ -1,7 +1,7 @@
 # This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
 
-name: Selenium-Java-Maven-TestNG-Projectt
+name: Selenium-Java-Maven-TestNG-Project
 
 on:
   push:
@@ -12,10 +12,11 @@ on:
         - 'main'
 
 jobs:
-  tralala_project:
+  tralala-project:
     runs-on: ubuntu-latest
+
     steps:
-      - name: hello_Step
+      - name: hello-Step
         run: echo "hellp step"
 
     
