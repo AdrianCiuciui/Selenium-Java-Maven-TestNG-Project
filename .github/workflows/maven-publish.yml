@@ -6,10 +6,11 @@ name: Selenium-Java-Maven-TestNG-Project
 on:
   push:
     branches:
-      - 'main'
+    - main
     pull_request:
       branches:
-        - 'main'
+      - main
+  workflow_dispatch:
 
 jobs:
   tralala-project:
