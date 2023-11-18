@@ -6,10 +6,10 @@ name: Selenium-Java-Maven-TestNG-Project
 on:
   push:
     branches:
-    - main
+    - master
     pull_request:
       branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: hello-Step
-        run: echo "hellp step"
+        run: echo "hello step"
 
     
 #    permissions:
