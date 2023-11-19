@@ -14,6 +14,8 @@ Steps (helper) classes are used.
 
 The webdriver is handled so that there is no need to add it when creating new objects from the POM classes.
 
-The application is mapped with: ID, className and xpath. This was also the preferred choice of locating the webelements.
+The application is mapped with: ID, className and xpath. This was also the preferred choice of locating the web elements.
 
 Random product(s) (are) is selected at each run.
+
+GitHub Actions is set up and running. It runs all the tests automatically when pushing into the master branch.
