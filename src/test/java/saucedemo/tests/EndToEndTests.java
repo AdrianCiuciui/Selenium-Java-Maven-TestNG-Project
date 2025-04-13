@@ -3,22 +3,8 @@ package saucedemo.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import saucedemo.base.BaseTest;
-import saucedemo.pageobjects.Cart;
-import saucedemo.pageobjects.CheckoutStepTwo;
-import saucedemo.pageobjects.Footer;
-import saucedemo.pageobjects.Header;
-import saucedemo.pageobjects.Login;
-import saucedemo.pageobjects.Menu;
-import saucedemo.pageobjects.OrderConfirmation;
-import saucedemo.pageobjects.Product;
-import saucedemo.pageobjects.Products;
-import saucedemo.steps.CartSteps;
-import saucedemo.steps.CheckoutOneSteps;
-import saucedemo.steps.CheckoutTwoSteps;
-import saucedemo.steps.LoginSteps;
-import saucedemo.steps.OrderConfirmationSteps;
-import saucedemo.steps.ProductSteps;
-import saucedemo.steps.ProductsSteps;
+import saucedemo.pageobjects.*;
+import saucedemo.steps.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -74,7 +60,6 @@ public class EndToEndTests extends BaseTest{
      */
     @Test(priority = 1)
     public void endToEndPlaceOrderWithOneProduct(){
-
         productsSteps.addProductToCartAndGoToCart(randomNumber0ToTotalAvailableProducts());
         cart.clickCheckoutButton();
         checkoutOneSteps.fillInInputFieldsAndPressNext();
@@ -89,12 +74,10 @@ public class EndToEndTests extends BaseTest{
         footer.checkSocialsAreDisplayed();
         menu.clickOnLogoutOption();
         login.checkAllPageElementsAreDisplayed();
-
     }
 
     @Test(priority = 2)
     public void endToEndPlaceOrderWithMultipleProductsCheckTotal(){
-
         int indexForFirst = randomNumber0ToTotalAvailableProducts();
         int indexForSecond = randomNumber0ToTotalAvailableProducts();
         int indexForThird = randomNumber0ToTotalAvailableProducts();
@@ -103,25 +86,18 @@ public class EndToEndTests extends BaseTest{
         productsSteps.setUpTheProducts();
         products.clickProductImage(indexForFirst);
         productSteps.checkPageElementsAreDisplayedExceptCartButtons();
-        assertThat("The add to cart button is not displayed",
-                product.isAddToCartButtonDisplayed(), is(true));
+        assertThat("The add to cart button is not displayed", product.isAddToCartButtonDisplayed(), is(true));
         productSteps.checkTheProductPageContents(productsOrdered.get(indexForFirst));
-        assertThat("The badge is displayed over the cart icon",
-                header.isBadgeDisplayed(), is(false));
+        assertThat("The badge is displayed over the cart icon", header.isBadgeDisplayed(), is(false));
         product.clickAddToCart();
-        assertThat("The remove from cart button is not displayed",
-                product.isRemoveFromCartButtonDisplayed(), is(true));
-        assertThat("The badge is not displayed over the cart icon",
-                header.isBadgeDisplayed(), is(true));
-        assertThat("The badge value is not as expected",
-                header.getCartBadgeValue(), is(++numberOfProductsInCart));
+        assertThat("The remove from cart button is not displayed", product.isRemoveFromCartButtonDisplayed(), is(true));
+        assertThat("The badge is not displayed over the cart icon", header.isBadgeDisplayed(), is(true));
+        assertThat("The badge value is not as expected", header.getCartBadgeValue(), is(++numberOfProductsInCart));
         product.clickBackToProducts();
         products.clickAddToCart(indexForSecond);
-        assertThat("The badge value is not as expected",
-                header.getCartBadgeValue(), is(++numberOfProductsInCart));
+        assertThat("The badge value is not as expected", header.getCartBadgeValue(), is(++numberOfProductsInCart));
         products.clickAddToCart(indexForThird);
-        assertThat("The badge value is not as expected",
-                header.getCartBadgeValue(), is(++numberOfProductsInCart));
+        assertThat("The badge value is not as expected", header.getCartBadgeValue(), is(++numberOfProductsInCart));
         header.clickCartButton();
         cart.clickProductRemoveButton(0);
         cart.clickCheckoutButton();
@@ -130,8 +106,7 @@ public class EndToEndTests extends BaseTest{
         checkoutTwoSteps.checkTotalSumValueOfProducts();
         checkoutStepTwo.clickFinishButton();
         confirmationSteps.checkPageIsDisplayed();
-        assertThat("The badge is displayed over the cart icon",
-                header.isBadgeDisplayed(), is(false));
+        assertThat("The badge is displayed over the cart icon", header.isBadgeDisplayed(), is(false));
         confirmation.clickBackHomeButton();
         header.checkTitleIsDisplayed();
         productsSteps.checkPageIsDisplayed();

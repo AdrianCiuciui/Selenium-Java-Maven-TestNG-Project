@@ -11,7 +11,7 @@ public class CheckoutStepTwo extends Cart {
 
     private final By labelPriceItemsTotal = className("summary_subtotal_label");
     private final By labelPriceTax = className("summary_tax_label");
-    private final By labelPriceTotal = xpath("//div[@class='summary_info_label summary_total_label']");
+    private final By labelPriceTotal = xpath("//div[@data-test='total-label']");
     private final By labelPriceAllItemsValues = xpath("//*[@class='inventory_item_price']");
     private final By buttonCancel = id("cancel");
     private final By buttonFinish = id("finish");
