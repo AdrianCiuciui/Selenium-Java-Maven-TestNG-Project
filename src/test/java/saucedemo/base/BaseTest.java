@@ -37,14 +37,16 @@ public class BaseTest{
 
     @BeforeMethod
     public void setup() {
-
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless");
+        options.addArguments("--no-sandbox"); // Bypass OS security model
+        options.addArguments("--incognito"); // Runs a new, clean instance of the browser
+        options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems in Docker
+        options.addArguments("--headless"); // The browser is not displayed
+        options.addArguments("--disable-gpu"); // Disables the GPU, used when running headless
+        options.addArguments("--start-maximized"); // Runs on the entire screen
+        options.addArguments("--disable-features=PasswordCheck"); // No longer displays a pop-up mentioning that the  "passwords are exposed in a data breach"
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
         driver.navigate().to(PROPERTIES.getProperty("url.base"));
         BasePageObject.setDriver(driver);
         waitImplicit(1);
